@@ -34,7 +34,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=585586591]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Synchronisation orbitale d'Europa"
+text = "Simulation du système solaire"
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=10007798]
 layout_mode = 2
