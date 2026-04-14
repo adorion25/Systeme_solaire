@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://bnpcxbieyarvj"]
+
+[ext_resource type="Script" uid="uid://bl7lqsf2un6ea" path="res://Lune.gd" id="1_a202f"]
+[ext_resource type="PackedScene" uid="uid://sih1ldeg6fm2" path="res://interface.tscn" id="2_noarx"]
+
+[sub_resource type="Environment" id="Environment_4xowi"]
+background_mode = 1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4xowi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a202f"]
+albedo_color = Color(0.85906833, 0.65784353, 0.30959874, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4xowi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a202f"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_noarx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
+albedo_color = Color(1, 0.42352942, 0.42352942, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r3fl7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jka67"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
+albedo_color = Color(6.3532593e-06, 0.7851083, 0.78734803, 1)
+
+[node name="Node3D" type="Node3D" unique_id=1593736269]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=714435028]
+environment = SubResource("Environment_4xowi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=163777072]
+transform = Transform3D(0.5070872, 0.7779335, 0.3710556, -0.8618328, 0.46281612, 0.20747374, -0.0103297755, -0.42499524, 0.9051366, 8.801237, 1.5151159, 4.5821605)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1026225519]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 25, 0)
+
+[node name="Jupiter" type="RigidBody3D" parent="." unique_id=1348569142]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Jupiter" unique_id=802058248]
+shape = SubResource("SphereShape3D_4xowi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Jupiter" unique_id=1807276950]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_a202f")
+mesh = SubResource("SphereMesh_4xowi")
+
+[node name="Europe 1" type="RigidBody3D" parent="." unique_id=1152047052 node_paths=PackedStringArray("europe_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+script = ExtResource("1_a202f")
+min_distance_simulee = 5.0
+max_distance_simulee = 15.0
+min_distance_reelle = 600000000.0
+max_distance_reelle = 700000000.0
+masse_centre_rotation = 1.989e+27
+masse_corps = 4.8e+22
+periode_relative = 8.0
+rayon_initial = 639892000.0
+vitesse_initiale = 10644.75
+etapes_calcul_par_ecran = 1000
+europe_2 = NodePath("../Europe 2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Europe 1" unique_id=1391428646]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_a202f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Europe 1" unique_id=737303604]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_noarx")
+surface_material_override/0 = SubResource("StandardMaterial3D_a0tk4")
+
+[node name="Europe 2" type="RigidBody3D" parent="." unique_id=1773264772 node_paths=PackedStringArray("europe_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 0)
+script = ExtResource("1_a202f")
+min_distance_simulee = 5.0
+max_distance_simulee = 15.0
+min_distance_reelle = 600000000.0
+max_distance_reelle = 700000000.0
+masse_centre_rotation = 1.989e+27
+masse_corps = 4.8e+22
+periode_relative = 8.0
+rayon_initial = 689832000.0
+vitesse_initiale = 17741.25
+etapes_calcul_par_ecran = 1000
+europe_2 = NodePath("../Europe 1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Europe 2" unique_id=1569230407]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_r3fl7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Europe 2" unique_id=676462935]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_jka67")
+surface_material_override/0 = SubResource("StandardMaterial3D_i5arm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=996496170]
+
+[node name="Interface" parent="CanvasLayer" unique_id=1115889947 node_paths=PackedStringArray("lune_1", "lune_2") instance=ExtResource("2_noarx")]
+lune_1 = NodePath("../../Europe 1")
+lune_2 = NodePath("../../Europe 2")
