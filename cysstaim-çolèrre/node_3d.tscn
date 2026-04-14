@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bnpcxbieyarvj"]
 
-[ext_resource type="Script" uid="uid://bl7lqsf2un6ea" path="res://Lune.gd" id="1_a202f"]
+[ext_resource type="Script" uid="uid://byjt3t2wc8gfu" path="res://astres_script.gd" id="1_noarx"]
 [ext_resource type="PackedScene" uid="uid://sih1ldeg6fm2" path="res://interface.tscn" id="2_noarx"]
 
 [sub_resource type="Environment" id="Environment_4xowi"]
@@ -27,77 +27,206 @@ albedo_color = Color(1, 0.42352942, 0.42352942, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_color = Color(6.3532593e-06, 0.7851083, 0.78734803, 1)
 
-[node name="Node3D" type="Node3D" unique_id=1593736269]
+[node name="Système solaire" type="Node3D" unique_id=1593736269]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=714435028]
+[node name="Environment_camera" type="Node3D" parent="." unique_id=266487833]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment_camera" unique_id=714435028]
 environment = SubResource("Environment_4xowi")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=163777072]
-transform = Transform3D(0.5070872, 0.7779335, 0.3710556, -0.8618328, 0.46281612, 0.20747374, -0.0103297755, -0.42499524, 0.9051366, 8.801237, 1.5151159, 4.5821605)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment_camera" unique_id=163777072]
+transform = Transform3D(0.50708723, 0.7779334, 0.3710556, -0.86183286, 0.4628162, 0.20747377, -0.010329776, -0.42499524, 0.9051367, 8.801237, 1.5151159, 4.5821605)
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1026225519]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 25, 0)
+[node name="Camera3D" type="Camera3D" parent="Environment_camera" unique_id=1026225519]
+transform = Transform3D(1, 2.9802319e-08, 7.450581e-09, -7.4505797e-09, -5.9604638e-08, 1, 2.9802319e-08, -1, -5.9604638e-08, -9.536743e-07, 25.000002, -4.7683716e-07)
 
-[node name="Jupiter" type="RigidBody3D" parent="." unique_id=1348569142]
+[node name="Astres" type="Node3D" parent="." unique_id=282295382]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Jupiter" unique_id=802058248]
+[node name="Soleil" type="RigidBody3D" parent="Astres" unique_id=1348569142]
+script = ExtResource("1_noarx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Soleil" unique_id=802058248]
 shape = SubResource("SphereShape3D_4xowi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Jupiter" unique_id=1807276950]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Soleil" unique_id=1807276950]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_a202f")
 mesh = SubResource("SphereMesh_4xowi")
 
-[node name="Europe 1" type="RigidBody3D" parent="." unique_id=1152047052 node_paths=PackedStringArray("europe_2")]
+[node name="Mercure" type="RigidBody3D" parent="Astres" unique_id=1152047052]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-script = ExtResource("1_a202f")
-min_distance_simulee = 5.0
-max_distance_simulee = 15.0
-min_distance_reelle = 600000000.0
-max_distance_reelle = 700000000.0
-masse_centre_rotation = 1.989e+27
-masse_corps = 4.8e+22
-periode_relative = 8.0
-rayon_initial = 639892000.0
-vitesse_initiale = 10644.75
-etapes_calcul_par_ecran = 1000
-europe_2 = NodePath("../Europe 2")
+script = ExtResource("1_noarx")
+min_distance_simulee = null
+max_distance_simulee = null
+min_distance_reelle = null
+max_distance_reelle = null
+masse_centre_rotation = null
+masse_corps = null
+periode_relative = null
+rayon_initial = null
+vitesse_initiale = null
+etapes_calcul_par_ecran = null
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Europe 1" unique_id=1391428646]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Mercure" unique_id=1391428646]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_a202f")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Europe 1" unique_id=737303604]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Mercure" unique_id=737303604]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_noarx")
 surface_material_override/0 = SubResource("StandardMaterial3D_a0tk4")
 
-[node name="Europe 2" type="RigidBody3D" parent="." unique_id=1773264772 node_paths=PackedStringArray("europe_2")]
+[node name="Venus" type="RigidBody3D" parent="Astres" unique_id=1773264772]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 0)
-script = ExtResource("1_a202f")
-min_distance_simulee = 5.0
-max_distance_simulee = 15.0
-min_distance_reelle = 600000000.0
-max_distance_reelle = 700000000.0
-masse_centre_rotation = 1.989e+27
-masse_corps = 4.8e+22
-periode_relative = 8.0
-rayon_initial = 689832000.0
-vitesse_initiale = 17741.25
-etapes_calcul_par_ecran = 1000
-europe_2 = NodePath("../Europe 1")
+script = ExtResource("1_noarx")
+min_distance_simulee = null
+max_distance_simulee = null
+min_distance_reelle = null
+max_distance_reelle = null
+masse_centre_rotation = null
+masse_corps = null
+periode_relative = null
+rayon_initial = null
+vitesse_initiale = null
+etapes_calcul_par_ecran = null
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Europe 2" unique_id=1569230407]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Venus" unique_id=1569230407]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_r3fl7")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Europe 2" unique_id=676462935]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Venus" unique_id=676462935]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_jka67")
 surface_material_override/0 = SubResource("StandardMaterial3D_i5arm")
 
+[node name="Terre" type="RigidBody3D" parent="Astres" unique_id=378534597]
+script = ExtResource("1_noarx")
+min_distance_simulee = null
+max_distance_simulee = null
+min_distance_reelle = null
+max_distance_reelle = null
+masse_centre_rotation = null
+masse_corps = null
+periode_relative = null
+rayon_initial = null
+vitesse_initiale = null
+etapes_calcul_par_ecran = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Terre" unique_id=1168680560]
+shape = SubResource("SphereShape3D_4xowi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Terre" unique_id=2028498]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_a202f")
+mesh = SubResource("SphereMesh_4xowi")
+
+[node name="Mars" type="RigidBody3D" parent="Astres" unique_id=890385200]
+script = ExtResource("1_noarx")
+min_distance_simulee = null
+max_distance_simulee = null
+min_distance_reelle = null
+max_distance_reelle = null
+masse_centre_rotation = null
+masse_corps = null
+periode_relative = null
+rayon_initial = null
+vitesse_initiale = null
+etapes_calcul_par_ecran = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Mars" unique_id=1420725071]
+shape = SubResource("SphereShape3D_4xowi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Mars" unique_id=1193850833]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_a202f")
+mesh = SubResource("SphereMesh_4xowi")
+
+[node name="Jupiter" type="RigidBody3D" parent="Astres" unique_id=429324684]
+script = ExtResource("1_noarx")
+min_distance_simulee = null
+max_distance_simulee = null
+min_distance_reelle = null
+max_distance_reelle = null
+masse_centre_rotation = null
+masse_corps = null
+periode_relative = null
+rayon_initial = null
+vitesse_initiale = null
+etapes_calcul_par_ecran = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Jupiter" unique_id=1585502378]
+shape = SubResource("SphereShape3D_4xowi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Jupiter" unique_id=1369175557]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_a202f")
+mesh = SubResource("SphereMesh_4xowi")
+
+[node name="Saturne" type="RigidBody3D" parent="Astres" unique_id=1993812437]
+script = ExtResource("1_noarx")
+min_distance_simulee = null
+max_distance_simulee = null
+min_distance_reelle = null
+max_distance_reelle = null
+masse_centre_rotation = null
+masse_corps = null
+periode_relative = null
+rayon_initial = null
+vitesse_initiale = null
+etapes_calcul_par_ecran = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Saturne" unique_id=1488157904]
+shape = SubResource("SphereShape3D_4xowi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Saturne" unique_id=2024929678]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_a202f")
+mesh = SubResource("SphereMesh_4xowi")
+
+[node name="Uranus" type="RigidBody3D" parent="Astres" unique_id=1986376096]
+script = ExtResource("1_noarx")
+min_distance_simulee = null
+max_distance_simulee = null
+min_distance_reelle = null
+max_distance_reelle = null
+masse_centre_rotation = null
+masse_corps = null
+periode_relative = null
+rayon_initial = null
+vitesse_initiale = null
+etapes_calcul_par_ecran = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Uranus" unique_id=1131591269]
+shape = SubResource("SphereShape3D_4xowi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Uranus" unique_id=1700499879]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_a202f")
+mesh = SubResource("SphereMesh_4xowi")
+
+[node name="Neptune" type="RigidBody3D" parent="Astres" unique_id=1641489921]
+script = ExtResource("1_noarx")
+min_distance_simulee = null
+max_distance_simulee = null
+min_distance_reelle = null
+max_distance_reelle = null
+masse_centre_rotation = null
+masse_corps = null
+periode_relative = null
+rayon_initial = null
+vitesse_initiale = null
+etapes_calcul_par_ecran = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Neptune" unique_id=740241153]
+shape = SubResource("SphereShape3D_4xowi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Neptune" unique_id=1038302884]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_a202f")
+mesh = SubResource("SphereMesh_4xowi")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=996496170]
 
 [node name="Interface" parent="CanvasLayer" unique_id=1115889947 node_paths=PackedStringArray("lune_1", "lune_2") instance=ExtResource("2_noarx")]
-lune_1 = NodePath("../../Europe 1")
-lune_2 = NodePath("../../Europe 2")
+lune_1 = NodePath("../../Astres/Mercure")
+lune_2 = NodePath("../../Astres/Venus")

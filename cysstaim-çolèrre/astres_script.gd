@@ -1,5 +1,4 @@
 extends RigidBody3D
-class_name Lune
 
 @export_group("Paramètre de conversion simulation")
 @export var min_distance_simulee : float
@@ -8,21 +7,17 @@ class_name Lune
 @export var max_distance_reelle : float
 
 @export_group("Simulation gravitationnelle")
-@export var masse_centre_rotation : float
 @export var masse_corps : float
 @export var periode_relative : float
 
 @export_group("Point d'Europe")
-@export var rayon_initial : float
+@export var rayon_initial : Vector3
 @export var vitesse_initiale : float
 
 @export_group("Paramètres d'Euler")
 @export var etapes_calcul_par_ecran : int
 
-var elasticite : float = 1e14
-var distance_equilibre : float = 24.97e6
-var coeff_dissipation : float = 4e16
-var G : float = 6.673e-11
+var G : float = 6.674e-11
 var r_1 : Vector3
 var v_1 : Vector3
 var r_2 : Vector3
@@ -30,7 +25,16 @@ var v_2 : Vector3
 var a_1 : Vector3
 var periode : float = 299.819e3
 var temps_ecoule : float
-@export var europe_2 : RigidBody3D
+
+var Soleil_position  : Vector3
+var Mercure_position : Vector3
+var Venus_position   : Vector3
+var Terre_position   : Vector3
+var Mars_position    : Vector3
+var Jupiter_position : Vector3
+var Saturne_position : Vector3
+var Uranus_position  : Vector3
+var Neptune_position : Vector3
 
 var pause : bool
 
@@ -79,6 +83,18 @@ func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
 	
 	return position_reelle.normalized() * facteur_distance_simulee
 
+func acceleration_gravitaionnelle(astre: RigidBody3D) -> Vector3:
+	"""
+	Calcule le vecteur 3D de l'accélération agissant sur le corps par rapport à l'astre donné
+	à l'aide de la position actuelle de l'astre donné.
+	
+	Paramètre :
+	position réelle de l'astre dans le plan 3D
+	"""
+	masse_corps_2 = masse_corps.astre
+	var scalaire = -1 * G * masse_corps.astre / position_reelle.length()**3
+	return scalaire * position_reelle
+	
 func appliquer_euler(temps_dernier_ecran : float) -> void:
 	"""
 	Applique la méthode d'Euler pour déterminer la position et la vitesse selon
@@ -92,15 +108,13 @@ func appliquer_euler(temps_dernier_ecran : float) -> void:
 	var h = nb_periode / etapes_calcul_par_ecran
 	for i in range(etapes_calcul_par_ecran):
 		
-		var force_gravitationnelle = -G * (masse_corps / 2 * masse_centre_rotation) / r_1.length()**3 * r_1
-		var force_ressort = elasticite * ((r_2 - r_1).length() - distance_equilibre) * (r_2 - r_1).normalized()
-		var force_frottement = coeff_dissipation * (v_2 - v_1)
+		var force_gravitationnelle = -G * acceleration force_gravitationnelle()
+	
 		
-		a_1 = (force_gravitationnelle + force_ressort + force_frottement) / (masse_corps / 2)
+		a_1 = (force_gravitationnelle) / (masse_corps / 2)
 		v_1 += h * a_1
 		r_1 += h * v_1
-		
-		
+
 func mettre_en_pause(mode_pause: bool) -> void:
 	"""Change le mode de la simulation (pause/"play")
 	
