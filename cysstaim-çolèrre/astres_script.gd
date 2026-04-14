@@ -3,38 +3,34 @@ extends RigidBody3D
 @export_group("Paramètre de conversion simulation")
 @export var min_distance_simulee : float
 @export var max_distance_simulee : float
-@export var min_distance_reelle : float
-@export var max_distance_reelle : float
+@export var min_distance_reelle  : float
+@export var max_distance_reelle  : float
+
+@export_group("Astres gravitationnels")
+@export var Soleil  : RigidBody3D
+@export var Mercure : RigidBody3D
+@export var Venus   : RigidBody3D
+@export var Terre   : RigidBody3D
+@export var Mars    : RigidBody3D
+@export var Jupiter : RigidBody3D
+@export var Saturne : RigidBody3D
+@export var Uranus  : RigidBody3D
+@export var Neptune : RigidBody3D
 
 @export_group("Simulation gravitationnelle")
 @export var masse_corps : float
 @export var periode_relative : float
+@export var position_initiale : Vector3
+@export var vitesse_initiale : Vector3
 
-@export_group("Point d'Europe")
-@export var rayon_initial : Vector3
-@export var vitesse_initiale : float
-
-@export_group("Paramètres d'Euler")
+@export_group("Paramètres de simulation")
 @export var etapes_calcul_par_ecran : int
 
 var G : float = 6.674e-11
-var r_1 : Vector3
-var v_1 : Vector3
-var r_2 : Vector3
-var v_2 : Vector3
-var a_1 : Vector3
+var position_reelle : Vector3
+var vitesse : Vector3
 var periode : float = 299.819e3
 var temps_ecoule : float
-
-var Soleil_position  : Vector3
-var Mercure_position : Vector3
-var Venus_position   : Vector3
-var Terre_position   : Vector3
-var Mars_position    : Vector3
-var Jupiter_position : Vector3
-var Saturne_position : Vector3
-var Uranus_position  : Vector3
-var Neptune_position : Vector3
 
 var pause : bool
 
@@ -42,12 +38,10 @@ var echelle_temps : float = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
-	r_1 = rayon_initial * Vector3(1, 0, 0)
-	v_1 = vitesse_initiale * Vector3(0, 0, 1)
+	position_reelle = position_initiale
+	vitesse = vitesse_initiale
 	
 	pause = false
-
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -58,13 +52,12 @@ func _process(delta: float) -> void:
 	if temps_ecoule >= 20 * periode_relative:
 		return
 		
-	r_2 = europe_2.r_1
-	v_2 = europe_2.v_1
+
 	appliquer_euler(delta*echelle_temps)
 
-	position = conv_position_reelle_a_simulee(r_1)
+	position = conv_position_reelle_a_simulee()
 	
-func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
+func conv_position_reelle_a_simulee() -> Vector3:
 	"""Effectue la conversion d'une position réelle à une position de l'espace 
 	de la simulation
 	
@@ -83,7 +76,7 @@ func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
 	
 	return position_reelle.normalized() * facteur_distance_simulee
 
-func acceleration_gravitaionnelle(astre: RigidBody3D) -> Vector3:
+func acceleration_gravitationnelle(autre_corps: RigidBody3D, position_i) -> Vector3:
 	"""
 	Calcule le vecteur 3D de l'accélération agissant sur le corps par rapport à l'astre donné
 	à l'aide de la position actuelle de l'astre donné.
@@ -91,9 +84,20 @@ func acceleration_gravitaionnelle(astre: RigidBody3D) -> Vector3:
 	Paramètre :
 	position réelle de l'astre dans le plan 3D
 	"""
-	masse_corps_2 = masse_corps.astre
-	var scalaire = -1 * G * masse_corps.astre / position_reelle.length()**3
-	return scalaire * position_reelle
+	var scalaire = -1 * G * autre_corps.masse_corps / position_i.length()**3
+	return scalaire * position_i
+	
+func acceleration_totale(position_i) -> Vector3:
+	"""Additione toutes les accélérations causées par les autres astres pour 
+	en n'avoir qu'une seule.
+	
+	Retour:
+	Vecteur d'accélération gravitaionnelle totale agissant sur le corps.
+	"""
+	
+	var a_tot = acceleration_gravitationnelle(Soleil, position_i) + acceleration_gravitationnelle(Mercure, position_i) + acceleration_gravitationnelle(Venus, position_i) + acceleration_gravitationnelle(Terre, position_i) + acceleration_gravitationnelle(Mars, position_i) + acceleration_gravitationnelle(Jupiter, position_i) + acceleration_gravitationnelle(Saturne, position_i) + acceleration_gravitationnelle(Uranus, position_i) + acceleration_gravitationnelle(Neptune, position_i)
+	
+	return a_tot
 	
 func appliquer_euler(temps_dernier_ecran : float) -> void:
 	"""
@@ -106,14 +110,17 @@ func appliquer_euler(temps_dernier_ecran : float) -> void:
 	"""
 	var nb_periode = temps_dernier_ecran * periode / periode_relative
 	var h = nb_periode / etapes_calcul_par_ecran
-	for i in range(etapes_calcul_par_ecran):
+	var temps = 0
+	while temps <= nb_periode:
+		var k1 = acceleration_totale(position_reelle)
+		var k2 = acceleration_totale(position_reelle + k1 * h/2)
+		var k3 = acceleration_totale(position_reelle + k2 * h/2)
+		var k4 = acceleration_totale(position_reelle + k3 * h)
+		vitesse += h*(k1 + 2*k2 + 2*k3 + k4)/6
 		
-		var force_gravitationnelle = -G * acceleration force_gravitationnelle()
+		position_reelle += vitesse * h
+		temps += h
 	
-		
-		a_1 = (force_gravitationnelle) / (masse_corps / 2)
-		v_1 += h * a_1
-		r_1 += h * v_1
 
 func mettre_en_pause(mode_pause: bool) -> void:
 	"""Change le mode de la simulation (pause/"play")

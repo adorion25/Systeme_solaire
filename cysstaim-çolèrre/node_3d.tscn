@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bnpcxbieyarvj"]
 
 [ext_resource type="Script" uid="uid://byjt3t2wc8gfu" path="res://astres_script.gd" id="1_noarx"]
-[ext_resource type="PackedScene" uid="uid://sih1ldeg6fm2" path="res://interface.tscn" id="2_noarx"]
 
 [sub_resource type="Environment" id="Environment_4xowi"]
 background_mode = 1
@@ -42,8 +41,19 @@ transform = Transform3D(1, 2.9802319e-08, 7.450581e-09, -7.4505797e-09, -5.96046
 
 [node name="Astres" type="Node3D" parent="." unique_id=282295382]
 
-[node name="Soleil" type="RigidBody3D" parent="Astres" unique_id=1348569142]
+[node name="Soleil" type="RigidBody3D" parent="Astres" unique_id=1348569142 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
 script = ExtResource("1_noarx")
+Soleil = NodePath(".")
+Mercure = NodePath("../Mercure")
+Venus = NodePath("../Venus")
+Terre = NodePath("../Terre")
+Mars = NodePath("../Mars")
+Jupiter = NodePath("../Jupiter")
+Saturne = NodePath("../Saturne")
+Uranus = NodePath("../Uranus")
+Neptune = NodePath("../Neptune")
+masse_corps = 1.989e+30
+etapes_calcul_par_ecran = 1000
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Soleil" unique_id=802058248]
 shape = SubResource("SphereShape3D_4xowi")
@@ -53,19 +63,20 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_a202f")
 mesh = SubResource("SphereMesh_4xowi")
 
-[node name="Mercure" type="RigidBody3D" parent="Astres" unique_id=1152047052]
+[node name="Mercure" type="RigidBody3D" parent="Astres" unique_id=1152047052 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 script = ExtResource("1_noarx")
-min_distance_simulee = null
-max_distance_simulee = null
-min_distance_reelle = null
-max_distance_reelle = null
-masse_centre_rotation = null
-masse_corps = null
-periode_relative = null
-rayon_initial = null
-vitesse_initiale = null
-etapes_calcul_par_ecran = null
+Soleil = NodePath("../Soleil")
+Mercure = NodePath(".")
+Venus = NodePath("../Venus")
+Terre = NodePath("../Terre")
+Mars = NodePath("../Mars")
+Jupiter = NodePath("../Jupiter")
+Saturne = NodePath("../Saturne")
+Uranus = NodePath("../Uranus")
+Neptune = NodePath("../Neptune")
+masse_corps = 3.285e+23
+etapes_calcul_par_ecran = 1000
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Mercure" unique_id=1391428646]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -76,19 +87,20 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_noarx")
 surface_material_override/0 = SubResource("StandardMaterial3D_a0tk4")
 
-[node name="Venus" type="RigidBody3D" parent="Astres" unique_id=1773264772]
+[node name="Venus" type="RigidBody3D" parent="Astres" unique_id=1773264772 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 0)
 script = ExtResource("1_noarx")
-min_distance_simulee = null
-max_distance_simulee = null
-min_distance_reelle = null
-max_distance_reelle = null
-masse_centre_rotation = null
-masse_corps = null
-periode_relative = null
-rayon_initial = null
-vitesse_initiale = null
-etapes_calcul_par_ecran = null
+Soleil = NodePath("../Soleil")
+Mercure = NodePath("../Mercure")
+Venus = NodePath(".")
+Terre = NodePath("../Terre")
+Mars = NodePath("../Mars")
+Jupiter = NodePath("../Jupiter")
+Saturne = NodePath("../Saturne")
+Uranus = NodePath("../Uranus")
+Neptune = NodePath("../Neptune")
+masse_corps = 4.867e+24
+etapes_calcul_par_ecran = 1000
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Venus" unique_id=1569230407]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -99,18 +111,19 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_jka67")
 surface_material_override/0 = SubResource("StandardMaterial3D_i5arm")
 
-[node name="Terre" type="RigidBody3D" parent="Astres" unique_id=378534597]
+[node name="Terre" type="RigidBody3D" parent="Astres" unique_id=378534597 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
 script = ExtResource("1_noarx")
-min_distance_simulee = null
-max_distance_simulee = null
-min_distance_reelle = null
-max_distance_reelle = null
-masse_centre_rotation = null
-masse_corps = null
-periode_relative = null
-rayon_initial = null
-vitesse_initiale = null
-etapes_calcul_par_ecran = null
+Soleil = NodePath("../Soleil")
+Mercure = NodePath("../Mercure")
+Venus = NodePath("../Venus")
+Terre = NodePath(".")
+Mars = NodePath("../Mars")
+Jupiter = NodePath("../Jupiter")
+Saturne = NodePath("../Saturne")
+Uranus = NodePath("../Uranus")
+Neptune = NodePath("../Neptune")
+masse_corps = 5.972e+24
+etapes_calcul_par_ecran = 1000
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Terre" unique_id=1168680560]
 shape = SubResource("SphereShape3D_4xowi")
@@ -120,18 +133,19 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_a202f")
 mesh = SubResource("SphereMesh_4xowi")
 
-[node name="Mars" type="RigidBody3D" parent="Astres" unique_id=890385200]
+[node name="Mars" type="RigidBody3D" parent="Astres" unique_id=890385200 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
 script = ExtResource("1_noarx")
-min_distance_simulee = null
-max_distance_simulee = null
-min_distance_reelle = null
-max_distance_reelle = null
-masse_centre_rotation = null
-masse_corps = null
-periode_relative = null
-rayon_initial = null
-vitesse_initiale = null
-etapes_calcul_par_ecran = null
+Soleil = NodePath("../Soleil")
+Mercure = NodePath("../Mercure")
+Venus = NodePath("../Venus")
+Terre = NodePath("../Terre")
+Mars = NodePath(".")
+Jupiter = NodePath("../Jupiter")
+Saturne = NodePath("../Saturne")
+Uranus = NodePath("../Uranus")
+Neptune = NodePath("../Neptune")
+masse_corps = 6.39e+23
+etapes_calcul_par_ecran = 1000
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Mars" unique_id=1420725071]
 shape = SubResource("SphereShape3D_4xowi")
@@ -141,18 +155,19 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_a202f")
 mesh = SubResource("SphereMesh_4xowi")
 
-[node name="Jupiter" type="RigidBody3D" parent="Astres" unique_id=429324684]
+[node name="Jupiter" type="RigidBody3D" parent="Astres" unique_id=429324684 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
 script = ExtResource("1_noarx")
-min_distance_simulee = null
-max_distance_simulee = null
-min_distance_reelle = null
-max_distance_reelle = null
-masse_centre_rotation = null
-masse_corps = null
-periode_relative = null
-rayon_initial = null
-vitesse_initiale = null
-etapes_calcul_par_ecran = null
+Soleil = NodePath("../Soleil")
+Mercure = NodePath("../Mercure")
+Venus = NodePath("../Venus")
+Terre = NodePath("../Terre")
+Mars = NodePath("../Mars")
+Jupiter = NodePath(".")
+Saturne = NodePath("../Saturne")
+Uranus = NodePath("../Uranus")
+Neptune = NodePath("../Neptune")
+masse_corps = 1.898e+27
+etapes_calcul_par_ecran = 1000
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Jupiter" unique_id=1585502378]
 shape = SubResource("SphereShape3D_4xowi")
@@ -162,18 +177,19 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_a202f")
 mesh = SubResource("SphereMesh_4xowi")
 
-[node name="Saturne" type="RigidBody3D" parent="Astres" unique_id=1993812437]
+[node name="Saturne" type="RigidBody3D" parent="Astres" unique_id=1993812437 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
 script = ExtResource("1_noarx")
-min_distance_simulee = null
-max_distance_simulee = null
-min_distance_reelle = null
-max_distance_reelle = null
-masse_centre_rotation = null
-masse_corps = null
-periode_relative = null
-rayon_initial = null
-vitesse_initiale = null
-etapes_calcul_par_ecran = null
+Soleil = NodePath("../Soleil")
+Mercure = NodePath("../Mercure")
+Venus = NodePath("../Venus")
+Terre = NodePath("../Terre")
+Mars = NodePath("../Mars")
+Jupiter = NodePath("../Jupiter")
+Saturne = NodePath(".")
+Uranus = NodePath("../Uranus")
+Neptune = NodePath("../Neptune")
+masse_corps = 5.6829999999999994e+26
+etapes_calcul_par_ecran = 1000
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Saturne" unique_id=1488157904]
 shape = SubResource("SphereShape3D_4xowi")
@@ -183,18 +199,19 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_a202f")
 mesh = SubResource("SphereMesh_4xowi")
 
-[node name="Uranus" type="RigidBody3D" parent="Astres" unique_id=1986376096]
+[node name="Uranus" type="RigidBody3D" parent="Astres" unique_id=1986376096 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
 script = ExtResource("1_noarx")
-min_distance_simulee = null
-max_distance_simulee = null
-min_distance_reelle = null
-max_distance_reelle = null
-masse_centre_rotation = null
-masse_corps = null
-periode_relative = null
-rayon_initial = null
-vitesse_initiale = null
-etapes_calcul_par_ecran = null
+Soleil = NodePath("../Soleil")
+Mercure = NodePath("../Mercure")
+Venus = NodePath("../Venus")
+Terre = NodePath("../Terre")
+Mars = NodePath("../Mars")
+Jupiter = NodePath("../Jupiter")
+Saturne = NodePath("../Saturne")
+Uranus = NodePath(".")
+Neptune = NodePath("../Neptune")
+masse_corps = 8.681e+25
+etapes_calcul_par_ecran = 1000
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Uranus" unique_id=1131591269]
 shape = SubResource("SphereShape3D_4xowi")
@@ -204,18 +221,19 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_a202f")
 mesh = SubResource("SphereMesh_4xowi")
 
-[node name="Neptune" type="RigidBody3D" parent="Astres" unique_id=1641489921]
+[node name="Neptune" type="RigidBody3D" parent="Astres" unique_id=1641489921 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
 script = ExtResource("1_noarx")
-min_distance_simulee = null
-max_distance_simulee = null
-min_distance_reelle = null
-max_distance_reelle = null
-masse_centre_rotation = null
-masse_corps = null
-periode_relative = null
-rayon_initial = null
-vitesse_initiale = null
-etapes_calcul_par_ecran = null
+Soleil = NodePath("../Soleil")
+Mercure = NodePath("../Mercure")
+Venus = NodePath("../Venus")
+Terre = NodePath("../Terre")
+Mars = NodePath("../Mars")
+Jupiter = NodePath("../Jupiter")
+Saturne = NodePath("../Saturne")
+Uranus = NodePath("../Uranus")
+Neptune = NodePath(".")
+masse_corps = 1.0239999999999999e+26
+etapes_calcul_par_ecran = 1000
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Neptune" unique_id=740241153]
 shape = SubResource("SphereShape3D_4xowi")
@@ -224,9 +242,3 @@ shape = SubResource("SphereShape3D_4xowi")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_a202f")
 mesh = SubResource("SphereMesh_4xowi")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=996496170]
-
-[node name="Interface" parent="CanvasLayer" unique_id=1115889947 node_paths=PackedStringArray("lune_1", "lune_2") instance=ExtResource("2_noarx")]
-lune_1 = NodePath("../../Astres/Mercure")
-lune_2 = NodePath("../../Astres/Venus")
