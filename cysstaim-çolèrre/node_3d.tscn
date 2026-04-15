@@ -7,24 +7,30 @@ background_mode = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4xowi"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a202f"]
-albedo_color = Color(0.85906833, 0.65784353, 0.30959874, 1)
+[sub_resource type="SphereMesh" id="SphereMesh_a202f"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_4xowi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a202f"]
+albedo_color = Color(0.9028552, 0.90285546, 7.70092e-07, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a202f"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_noarx"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
-albedo_color = Color(1, 0.42352942, 0.42352942, 1)
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_r3fl7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_a0tk4"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_r3fl7"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_jka67"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
-albedo_color = Color(6.3532593e-06, 0.7851083, 0.78734803, 1)
+[sub_resource type="SphereMesh" id="SphereMesh_i5arm"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_wc5p8"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jsk3o"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4arys"]
 
 [node name="Système solaire" type="Node3D" unique_id=1593736269]
 
@@ -37,12 +43,14 @@ environment = SubResource("Environment_4xowi")
 transform = Transform3D(0.50708723, 0.7779334, 0.3710556, -0.86183286, 0.4628162, 0.20747377, -0.010329776, -0.42499524, 0.9051367, 8.801237, 1.5151159, 4.5821605)
 
 [node name="Camera3D" type="Camera3D" parent="Environment_camera" unique_id=1026225519]
-transform = Transform3D(1, 2.9802319e-08, 7.450581e-09, -7.4505797e-09, -5.9604638e-08, 1, 2.9802319e-08, -1, -5.9604638e-08, -9.536743e-07, 25.000002, -4.7683716e-07)
+transform = Transform3D(0.9999999400000009, 0, 0, 0, 0.8660254037844387, 0.4999999700000004, 0, -0.49999999999999994, 0.8660253518229153, 0, 60, 120)
 
 [node name="Astres" type="Node3D" parent="." unique_id=282295382]
 
 [node name="Soleil" type="RigidBody3D" parent="Astres" unique_id=1348569142 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
 script = ExtResource("1_noarx")
+max_distance_simulee = 1.0
+max_distance_reelle = 1.0
 Soleil = NodePath(".")
 Mercure = NodePath("../Mercure")
 Venus = NodePath("../Venus")
@@ -53,19 +61,26 @@ Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
 masse_corps = 1.989e+30
-etapes_calcul_par_ecran = 1000
+periode_relative = 1.0
+position_initiale = Vector3(1, 1, 1)
+etapes_calcul_par_ecran = 100
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Soleil" unique_id=802058248]
+transform = Transform3D(6.787, 0, 0, 0, 6.787, 0, 0, 0, 6.787, 0, 0, 0)
 shape = SubResource("SphereShape3D_4xowi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Soleil" unique_id=1807276950]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_a202f")
-mesh = SubResource("SphereMesh_4xowi")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Soleil" unique_id=319167872]
+transform = Transform3D(6.787, 0, 0, 0, 6.787, 0, 0, 0, 6.787, 0, 0, 0)
+mesh = SubResource("SphereMesh_a202f")
+surface_material_override/0 = SubResource("StandardMaterial3D_a202f")
 
 [node name="Mercure" type="RigidBody3D" parent="Astres" unique_id=1152047052 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
 script = ExtResource("1_noarx")
+min_distance_simulee = 12.5
+max_distance_simulee = 17.5
+min_distance_reelle = 45000000000.0
+max_distance_reelle = 71000000000.0
 Soleil = NodePath("../Soleil")
 Mercure = NodePath(".")
 Venus = NodePath("../Venus")
@@ -76,20 +91,26 @@ Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
 masse_corps = 3.285e+23
-etapes_calcul_par_ecran = 1000
+periode_relative = 0.241
+position_initiale = Vector3(-39300000000, -34200000000, 11500000000)
+vitesse_initiale = Vector3(30300, -44600, -4630)
+etapes_calcul_par_ecran = 100
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Mercure" unique_id=1391428646]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(4.902, 0, 0, 0, 4.902, 0, 0, 0, 4.902, 0, 0, 0)
 shape = SubResource("SphereShape3D_a202f")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Mercure" unique_id=737303604]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Mercure" unique_id=1597559153]
+transform = Transform3D(4.902, 0, 0, 0, 4.902, 0, 0, 0, 4.902, 0, 0, 0)
 mesh = SubResource("SphereMesh_noarx")
-surface_material_override/0 = SubResource("StandardMaterial3D_a0tk4")
 
 [node name="Venus" type="RigidBody3D" parent="Astres" unique_id=1773264772 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
 script = ExtResource("1_noarx")
+min_distance_simulee = 27.5
+max_distance_simulee = 32.5
+min_distance_reelle = 97000000000.0
+max_distance_reelle = 119000000000.0
 Soleil = NodePath("../Soleil")
 Mercure = NodePath("../Mercure")
 Venus = NodePath(".")
@@ -99,20 +120,27 @@ Jupiter = NodePath("../Jupiter")
 Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
-masse_corps = 4.867e+24
-etapes_calcul_par_ecran = 1000
+masse_corps = 4.87e+24
+periode_relative = 0.616
+position_initiale = Vector3(104000000000, 28600000000, -6150000000)
+vitesse_initiale = Vector3(-9400, 33700, 1470)
+etapes_calcul_par_ecran = 100
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Venus" unique_id=1569230407]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(5.205, 0, 0, 0, 5.205, 0, 0, 0, 5.205, 0, 0, 0)
 shape = SubResource("SphereShape3D_r3fl7")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Venus" unique_id=676462935]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = SubResource("SphereMesh_jka67")
-surface_material_override/0 = SubResource("StandardMaterial3D_i5arm")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Venus" unique_id=1207975692]
+transform = Transform3D(5.205, 0, 0, 0, 5.205, 0, 0, 0, 5.205, 0, 0, 0)
+mesh = SubResource("SphereMesh_a0tk4")
 
 [node name="Terre" type="RigidBody3D" parent="Astres" unique_id=378534597 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 0)
 script = ExtResource("1_noarx")
+min_distance_simulee = 42.5
+max_distance_simulee = 47.5
+min_distance_reelle = 137000000000.0
+max_distance_reelle = 162000000000.0
 Soleil = NodePath("../Soleil")
 Mercure = NodePath("../Mercure")
 Venus = NodePath("../Venus")
@@ -122,19 +150,27 @@ Jupiter = NodePath("../Jupiter")
 Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
-masse_corps = 5.972e+24
-etapes_calcul_par_ecran = 1000
+masse_corps = 5.97e+24
+periode_relative = 1.0
+position_initiale = Vector3(-142000000000, -47400000000, 1640000)
+vitesse_initiale = Vector3(9150, -28200, 1.08)
+etapes_calcul_par_ecran = 100
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Terre" unique_id=1168680560]
+transform = Transform3D(5.222, 0, 0, 0, 5.222, 0, 0, 0, 5.222, 0, 0, 0)
 shape = SubResource("SphereShape3D_4xowi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Terre" unique_id=2028498]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_a202f")
-mesh = SubResource("SphereMesh_4xowi")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Terre" unique_id=333021304]
+transform = Transform3D(5.222, 0, 0, 0, 5.222, 0, 0, 0, 5.222, 0, 0, 0)
+mesh = SubResource("SphereMesh_r3fl7")
 
 [node name="Mars" type="RigidBody3D" parent="Astres" unique_id=890385200 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
 script = ExtResource("1_noarx")
+min_distance_simulee = 57.5
+max_distance_simulee = 62.5
+min_distance_reelle = 197000000000.0
+max_distance_reelle = 259000000000.0
 Soleil = NodePath("../Soleil")
 Mercure = NodePath("../Mercure")
 Venus = NodePath("../Venus")
@@ -144,19 +180,27 @@ Jupiter = NodePath("../Jupiter")
 Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
-masse_corps = 6.39e+23
-etapes_calcul_par_ecran = 1000
+masse_corps = 6.42e+23
+periode_relative = 1.881
+position_initiale = Vector3(-115000000000, -188000000000, -1290000000)
+vitesse_initiale = Vector3(20300, -9910, -694)
+etapes_calcul_par_ecran = 100
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Mars" unique_id=1420725071]
+transform = Transform3D(5.012, 0, 0, 0, 5.012, 0, 0, 0, 5.012, 0, 0, 0)
 shape = SubResource("SphereShape3D_4xowi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Mars" unique_id=1193850833]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_a202f")
-mesh = SubResource("SphereMesh_4xowi")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Mars" unique_id=1424022756]
+transform = Transform3D(5.012, 0, 0, 0, 5.012, 0, 0, 0, 5.012, 0, 0, 0)
+mesh = SubResource("SphereMesh_jka67")
 
 [node name="Jupiter" type="RigidBody3D" parent="Astres" unique_id=429324684 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, 0)
 script = ExtResource("1_noarx")
+min_distance_simulee = 72.5
+max_distance_simulee = 77.5
+min_distance_reelle = 731000000000.0
+max_distance_reelle = 827000000000.0
 Soleil = NodePath("../Soleil")
 Mercure = NodePath("../Mercure")
 Venus = NodePath("../Venus")
@@ -167,18 +211,26 @@ Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
 masse_corps = 1.898e+27
-etapes_calcul_par_ecran = 1000
+periode_relative = 11.86
+position_initiale = Vector3(697000000000, 291000000000, -15500000000)
+vitesse_initiale = Vector3(-4910, 12000, 95.6)
+etapes_calcul_par_ecran = 100
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Jupiter" unique_id=1585502378]
+transform = Transform3D(6.021, 0, 0, 0, 6.021, 0, 0, 0, 6.021, 0, 0, 0)
 shape = SubResource("SphereShape3D_4xowi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Jupiter" unique_id=1369175557]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_a202f")
-mesh = SubResource("SphereMesh_4xowi")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Jupiter" unique_id=70776718]
+transform = Transform3D(6.021, 0, 0, 0, 6.021, 0, 0, 0, 6.021, 0, 0, 0)
+mesh = SubResource("SphereMesh_i5arm")
 
 [node name="Saturne" type="RigidBody3D" parent="Astres" unique_id=1993812437 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 0)
 script = ExtResource("1_noarx")
+min_distance_simulee = 87.5
+max_distance_simulee = 92.5
+min_distance_reelle = 1250000000000.0
+max_distance_reelle = 1610000000000.0
 Soleil = NodePath("../Soleil")
 Mercure = NodePath("../Mercure")
 Venus = NodePath("../Venus")
@@ -188,19 +240,27 @@ Jupiter = NodePath("../Jupiter")
 Saturne = NodePath(".")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
-masse_corps = 5.6829999999999994e+26
-etapes_calcul_par_ecran = 1000
+masse_corps = 5.68e+26
+periode_relative = 29.46
+position_initiale = Vector3(1410000000000, -413000000000, -53800000000)
+vitesse_initiale = Vector3(2440, 9010, -352)
+etapes_calcul_par_ecran = 100
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Saturne" unique_id=1488157904]
+transform = Transform3D(5.96, 0, 0, 0, 5.96, 0, 0, 0, 5.96, 0, 0, 0)
 shape = SubResource("SphereShape3D_4xowi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Saturne" unique_id=2024929678]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_a202f")
-mesh = SubResource("SphereMesh_4xowi")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Saturne" unique_id=2078252969]
+transform = Transform3D(5.96, 0, 0, 0, 5.96, 0, 0, 0, 5.96, 0, 0, 0)
+mesh = SubResource("SphereMesh_wc5p8")
 
 [node name="Uranus" type="RigidBody3D" parent="Astres" unique_id=1986376096 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0, 0)
 script = ExtResource("1_noarx")
+min_distance_simulee = 102.5
+max_distance_simulee = 107.5
+min_distance_reelle = 2640000000000.0
+max_distance_reelle = 3100000000000.0
 Soleil = NodePath("../Soleil")
 Mercure = NodePath("../Mercure")
 Venus = NodePath("../Venus")
@@ -210,19 +270,27 @@ Jupiter = NodePath("../Jupiter")
 Saturne = NodePath("../Saturne")
 Uranus = NodePath(".")
 Neptune = NodePath("../Neptune")
-masse_corps = 8.681e+25
-etapes_calcul_par_ecran = 1000
+masse_corps = 8.68e+25
+periode_relative = 84.01
+position_initiale = Vector3(1860000000000, 2310000000000, -21700000000)
+vitesse_initiale = Vector3(-5320, 4010, 76.7)
+etapes_calcul_par_ecran = 100
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Uranus" unique_id=1131591269]
+transform = Transform3D(5.683, 0, 0, 0, 5.683, 0, 0, 0, 5.683, 0, 0, 0)
 shape = SubResource("SphereShape3D_4xowi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Uranus" unique_id=1700499879]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_a202f")
-mesh = SubResource("SphereMesh_4xowi")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Uranus" unique_id=1958744073]
+transform = Transform3D(5.683, 0, 0, 0, 5.683, 0, 0, 0, 5.683, 0, 0, 0)
+mesh = SubResource("SphereMesh_jsk3o")
 
 [node name="Neptune" type="RigidBody3D" parent="Astres" unique_id=1641489921 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 0, 0)
 script = ExtResource("1_noarx")
+min_distance_simulee = 117.5
+max_distance_simulee = 122.5
+min_distance_reelle = 4340000000000.0
+max_distance_reelle = 4650000000000.0
 Soleil = NodePath("../Soleil")
 Mercure = NodePath("../Mercure")
 Venus = NodePath("../Venus")
@@ -232,13 +300,16 @@ Jupiter = NodePath("../Jupiter")
 Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath(".")
-masse_corps = 1.0239999999999999e+26
-etapes_calcul_par_ecran = 1000
+masse_corps = 1.0199999999999999e+26
+periode_relative = 164.8
+position_initiale = Vector3(4420000000000, -7.58, -94200000000)
+vitesse_initiale = Vector3(912, 5350, -128)
+etapes_calcul_par_ecran = 100
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Neptune" unique_id=740241153]
+transform = Transform3D(5.673, 0, 0, 0, 5.673, 0, 0, 0, 5.673, 0, 0, 0)
 shape = SubResource("SphereShape3D_4xowi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Neptune" unique_id=1038302884]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_a202f")
-mesh = SubResource("SphereMesh_4xowi")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Neptune" unique_id=1048605292]
+transform = Transform3D(5.673, 0, 0, 0, 5.673, 0, 0, 0, 5.673, 0, 0, 0)
+mesh = SubResource("SphereMesh_4arys")

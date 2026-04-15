@@ -40,20 +40,15 @@ var echelle_temps : float = 1.0
 func _ready() -> void:
 	position_reelle = position_initiale
 	vitesse = vitesse_initiale
-	
+	print(position_reelle, vitesse)
 	pause = false
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if pause :
 		return
-	
-	temps_ecoule += delta 
-	if temps_ecoule >= 20 * periode_relative:
-		return
-		
 
-	appliquer_euler(delta*echelle_temps)
+	appliquer_runge_kutta(delta*echelle_temps)
 
 	position = conv_position_reelle_a_simulee()
 	
@@ -76,7 +71,7 @@ func conv_position_reelle_a_simulee() -> Vector3:
 	
 	return position_reelle.normalized() * facteur_distance_simulee
 
-func acceleration_gravitationnelle(autre_corps: RigidBody3D, position_i) -> Vector3:
+func acceleration_gravitationnelle(autre_corps: RigidBody3D, position_i: Vector3) -> Vector3:
 	"""
 	Calcule le vecteur 3D de l'accélération agissant sur le corps par rapport à l'astre donné
 	à l'aide de la position actuelle de l'astre donné.
@@ -84,10 +79,15 @@ func acceleration_gravitationnelle(autre_corps: RigidBody3D, position_i) -> Vect
 	Paramètre :
 	position réelle de l'astre dans le plan 3D
 	"""
-	var scalaire = -1 * G * autre_corps.masse_corps / position_i.length()**3
-	return scalaire * position_i
+	if autre_corps == self or autre_corps.position_reelle == Vector3.ZERO:
+		return Vector3.ZERO
+
+	var scalaire = -1 * G * autre_corps.masse_corps / (autre_corps.position_reelle - position_i).length()**3
+	var acc_g = scalaire * (autre_corps.position_reelle - position_i)
 	
-func acceleration_totale(position_i) -> Vector3:
+	return acc_g
+	
+func acceleration_totale(position_i: Vector3) -> Vector3:
 	"""Additione toutes les accélérations causées par les autres astres pour 
 	en n'avoir qu'une seule.
 	
@@ -99,7 +99,7 @@ func acceleration_totale(position_i) -> Vector3:
 	
 	return a_tot
 	
-func appliquer_euler(temps_dernier_ecran : float) -> void:
+func appliquer_runge_kutta(temps_dernier_ecran : float) -> void:
 	"""
 	Applique la méthode d'Euler pour déterminer la position et la vitesse selon
 	le temps de la simulation. Toutes les forces en jeu sur l'objet y sont calculées 
