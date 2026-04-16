@@ -1,36 +1,17 @@
 [gd_scene format=3 uid="uid://bnpcxbieyarvj"]
 
-[ext_resource type="Script" uid="uid://byjt3t2wc8gfu" path="res://astres_script.gd" id="1_noarx"]
+[ext_resource type="PackedScene" uid="uid://rm367bqg7b75" path="res://soleil.tscn" id="1_4arys"]
+[ext_resource type="PackedScene" uid="uid://bevj4x1nwydyk" path="res://mercure.tscn" id="2_6iypd"]
+[ext_resource type="PackedScene" uid="uid://brtkama7wprbs" path="res://venus.tscn" id="3_tereu"]
+[ext_resource type="PackedScene" uid="uid://ct1h1ol6r8ntd" path="res://terre.tscn" id="4_cdqbm"]
+[ext_resource type="PackedScene" uid="uid://cca27akcbavyu" path="res://mars.tscn" id="5_imku0"]
+[ext_resource type="PackedScene" uid="uid://b4f2f18abw22q" path="res://jupiter.tscn" id="6_wlxy5"]
+[ext_resource type="PackedScene" uid="uid://cks3tdbmqsgmk" path="res://saturne.tscn" id="7_3v7ru"]
+[ext_resource type="PackedScene" uid="uid://c7o1hwhp6sg8l" path="res://uranus.tscn" id="8_tcnuu"]
+[ext_resource type="PackedScene" uid="uid://btic5h7rcmng0" path="res://neptune.tscn" id="9_tuemg"]
 
 [sub_resource type="Environment" id="Environment_4xowi"]
 background_mode = 1
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_4xowi"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_a202f"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a202f"]
-albedo_color = Color(0.9028552, 0.90285546, 7.70092e-07, 1)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_a202f"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_noarx"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_r3fl7"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_a0tk4"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_r3fl7"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_jka67"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_i5arm"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_wc5p8"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_jsk3o"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_4arys"]
 
 [node name="Système solaire" type="Node3D" unique_id=1593736269]
 
@@ -39,18 +20,17 @@ albedo_color = Color(0.9028552, 0.90285546, 7.70092e-07, 1)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment_camera" unique_id=714435028]
 environment = SubResource("Environment_4xowi")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment_camera" unique_id=163777072]
-transform = Transform3D(0.50708723, 0.7779334, 0.3710556, -0.86183286, 0.4628162, 0.20747377, -0.010329776, -0.42499524, 0.9051367, 8.801237, 1.5151159, 4.5821605)
-
 [node name="Camera3D" type="Camera3D" parent="Environment_camera" unique_id=1026225519]
-transform = Transform3D(0.9999999400000008, 0, 0, 0, 0.8660254037844387, 0.4999999700000004, 0, -0.49999999999999994, 0.8660253518229153, 0, 60, 120)
+transform = Transform3D(1, 0, 0, 0, -0.4999999999999998, 0.8660254037844385, 0, -0.8660254037844387, -0.49999999999999967, 0, 300, -150)
 
-[node name="Astres" type="Node3D" parent="." unique_id=282295382]
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment_camera" unique_id=994336632]
 
-[node name="Soleil" type="RigidBody3D" parent="Astres" unique_id=1348569142 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
-script = ExtResource("1_noarx")
-max_distance_simulee = 1.0
-max_distance_reelle = 10000000000.0
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment_camera" unique_id=357668207]
+transform = Transform3D(-0.9998138564867644, 0, -0.019293842983286284, 0, 1, 0, 0.019293842983286284, 0, -0.9998138564867644, 0, 0, 0)
+
+[node name="Soleil" parent="." unique_id=138507453 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("1_4arys")]
+max_distance_simulee = 2.0
+max_distance_reelle = 696350000.0
 Soleil = NodePath(".")
 Mercure = NodePath("../Mercure")
 Venus = NodePath("../Venus")
@@ -62,25 +42,14 @@ Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
 masse_corps = 1.989e+30
 periode_relative = 1.0
-position_initiale = Vector3(1, 1, 1)
 etapes_calcul_par_ecran = 100
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Soleil" unique_id=802058248]
-transform = Transform3D(6.787, 0, 0, 0, 6.787, 0, 0, 0, 6.787, 0, 0, 0)
-shape = SubResource("SphereShape3D_4xowi")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Soleil" unique_id=319167872]
-transform = Transform3D(6.787, 0, 0, 0, 6.787, 0, 0, 0, 6.787, 0, 0, 0)
-mesh = SubResource("SphereMesh_a202f")
-surface_material_override/0 = SubResource("StandardMaterial3D_a202f")
-
-[node name="Mercure" type="RigidBody3D" parent="Astres" unique_id=1152047052 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
-script = ExtResource("1_noarx")
-min_distance_simulee = 12.5
-max_distance_simulee = 17.5
+[node name="Mercure" parent="." unique_id=1313541899 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("2_6iypd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
+min_distance_simulee = 45.0
+max_distance_simulee = 50.0
 min_distance_reelle = 45000000000.0
-max_distance_reelle = 71000000000.0
+max_distance_reelle = 70800000000.0
 Soleil = NodePath("../Soleil")
 Mercure = NodePath(".")
 Venus = NodePath("../Venus")
@@ -90,25 +59,16 @@ Jupiter = NodePath("../Jupiter")
 Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
-masse_corps = 3.285e+23
-periode_relative = 0.241
-position_initiale = Vector3(-39300000000, -34200000000, 11500000000)
+masse_corps = 3.825e+23
+periode_relative = 0.964
+position_initiale = Vector3(-39300000000, -34200000000, 1150000000)
 vitesse_initiale = Vector3(30300, -44600, -4630)
 etapes_calcul_par_ecran = 100
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Mercure" unique_id=1391428646]
-transform = Transform3D(4.902, 0, 0, 0, 4.902, 0, 0, 0, 4.902, 0, 0, 0)
-shape = SubResource("SphereShape3D_a202f")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Mercure" unique_id=1597559153]
-transform = Transform3D(4.902, 0, 0, 0, 4.902, 0, 0, 0, 4.902, 0, 0, 0)
-mesh = SubResource("SphereMesh_noarx")
-
-[node name="Venus" type="RigidBody3D" parent="Astres" unique_id=1773264772 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
-script = ExtResource("1_noarx")
-min_distance_simulee = 27.5
-max_distance_simulee = 32.5
+[node name="Venus" parent="." unique_id=234343551 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("3_tereu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
+min_distance_simulee = 95.0
+max_distance_simulee = 100.0
 min_distance_reelle = 97000000000.0
 max_distance_reelle = 119000000000.0
 Soleil = NodePath("../Soleil")
@@ -120,25 +80,16 @@ Jupiter = NodePath("../Jupiter")
 Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
-masse_corps = 4.87e+24
-periode_relative = 0.616
+masse_corps = 4.867e+24
+periode_relative = 2.466
 position_initiale = Vector3(104000000000, 28600000000, -6150000000)
 vitesse_initiale = Vector3(-9400, 33700, 1470)
 etapes_calcul_par_ecran = 100
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Venus" unique_id=1569230407]
-transform = Transform3D(5.205, 0, 0, 0, 5.205, 0, 0, 0, 5.205, 0, 0, 0)
-shape = SubResource("SphereShape3D_r3fl7")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Venus" unique_id=1207975692]
-transform = Transform3D(5.205, 0, 0, 0, 5.205, 0, 0, 0, 5.205, 0, 0, 0)
-mesh = SubResource("SphereMesh_a0tk4")
-
-[node name="Terre" type="RigidBody3D" parent="Astres" unique_id=378534597 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 0)
-script = ExtResource("1_noarx")
-min_distance_simulee = 42.5
-max_distance_simulee = 47.5
+[node name="Terre" parent="." unique_id=1146063944 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("4_cdqbm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 0, 0)
+min_distance_simulee = 145.0
+max_distance_simulee = 150.0
 min_distance_reelle = 137000000000.0
 max_distance_reelle = 162000000000.0
 Soleil = NodePath("../Soleil")
@@ -151,24 +102,15 @@ Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
 masse_corps = 5.97e+24
-periode_relative = 1.0
+periode_relative = 4.0
 position_initiale = Vector3(-142000000000, -47400000000, 1640000)
 vitesse_initiale = Vector3(9150, -28200, 1.08)
 etapes_calcul_par_ecran = 100
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Terre" unique_id=1168680560]
-transform = Transform3D(5.222, 0, 0, 0, 5.222, 0, 0, 0, 5.222, 0, 0, 0)
-shape = SubResource("SphereShape3D_4xowi")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Terre" unique_id=333021304]
-transform = Transform3D(5.222, 0, 0, 0, 5.222, 0, 0, 0, 5.222, 0, 0, 0)
-mesh = SubResource("SphereMesh_r3fl7")
-
-[node name="Mars" type="RigidBody3D" parent="Astres" unique_id=890385200 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
-script = ExtResource("1_noarx")
-min_distance_simulee = 57.5
-max_distance_simulee = 62.5
+[node name="Mars" parent="." unique_id=593639474 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("5_imku0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
+min_distance_simulee = 195.0
+max_distance_simulee = 200.0
 min_distance_reelle = 197000000000.0
 max_distance_reelle = 259000000000.0
 Soleil = NodePath("../Soleil")
@@ -181,24 +123,15 @@ Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
 masse_corps = 6.42e+23
-periode_relative = 1.881
+periode_relative = 7.524
 position_initiale = Vector3(-115000000000, -188000000000, -1290000000)
 vitesse_initiale = Vector3(20300, -9910, -694)
 etapes_calcul_par_ecran = 100
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Mars" unique_id=1420725071]
-transform = Transform3D(5.012, 0, 0, 0, 5.012, 0, 0, 0, 5.012, 0, 0, 0)
-shape = SubResource("SphereShape3D_4xowi")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Mars" unique_id=1424022756]
-transform = Transform3D(5.012, 0, 0, 0, 5.012, 0, 0, 0, 5.012, 0, 0, 0)
-mesh = SubResource("SphereMesh_jka67")
-
-[node name="Jupiter" type="RigidBody3D" parent="Astres" unique_id=429324684 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, 0)
-script = ExtResource("1_noarx")
-min_distance_simulee = 72.5
-max_distance_simulee = 77.5
+[node name="Jupiter" parent="." unique_id=1493003131 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("6_wlxy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 0)
+min_distance_simulee = 245.0
+max_distance_simulee = 250.0
 min_distance_reelle = 731000000000.0
 max_distance_reelle = 827000000000.0
 Soleil = NodePath("../Soleil")
@@ -210,25 +143,16 @@ Jupiter = NodePath(".")
 Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
-masse_corps = 1.898e+27
-periode_relative = 11.86
-position_initiale = Vector3(697000000000, 291000000000, -15500000000)
+masse_corps = 1.9e+27
+periode_relative = 47.448
+position_initiale = Vector3(6970000000000, 291000000000, -15500000000)
 vitesse_initiale = Vector3(-4910, 12000, 95.6)
 etapes_calcul_par_ecran = 100
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Jupiter" unique_id=1585502378]
-transform = Transform3D(6.021, 0, 0, 0, 6.021, 0, 0, 0, 6.021, 0, 0, 0)
-shape = SubResource("SphereShape3D_4xowi")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Jupiter" unique_id=70776718]
-transform = Transform3D(6.021, 0, 0, 0, 6.021, 0, 0, 0, 6.021, 0, 0, 0)
-mesh = SubResource("SphereMesh_i5arm")
-
-[node name="Saturne" type="RigidBody3D" parent="Astres" unique_id=1993812437 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 0)
-script = ExtResource("1_noarx")
-min_distance_simulee = 87.5
-max_distance_simulee = 92.5
+[node name="Saturne" parent="." unique_id=1711202820 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("7_3v7ru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 0)
+min_distance_simulee = 295.0
+max_distance_simulee = 300.0
 min_distance_reelle = 1250000000000.0
 max_distance_reelle = 1610000000000.0
 Soleil = NodePath("../Soleil")
@@ -241,24 +165,15 @@ Saturne = NodePath(".")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
 masse_corps = 5.68e+26
-periode_relative = 29.46
+periode_relative = 117.828
 position_initiale = Vector3(1410000000000, -413000000000, -53800000000)
 vitesse_initiale = Vector3(2440, 9010, -352)
 etapes_calcul_par_ecran = 100
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Saturne" unique_id=1488157904]
-transform = Transform3D(5.96, 0, 0, 0, 5.96, 0, 0, 0, 5.96, 0, 0, 0)
-shape = SubResource("SphereShape3D_4xowi")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Saturne" unique_id=2078252969]
-transform = Transform3D(5.96, 0, 0, 0, 5.96, 0, 0, 0, 5.96, 0, 0, 0)
-mesh = SubResource("SphereMesh_wc5p8")
-
-[node name="Uranus" type="RigidBody3D" parent="Astres" unique_id=1986376096 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0, 0)
-script = ExtResource("1_noarx")
-min_distance_simulee = 102.5
-max_distance_simulee = 107.5
+[node name="Uranus" parent="." unique_id=192694237 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("8_tcnuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350, 0, 0)
+min_distance_simulee = 345.0
+max_distance_simulee = 350.0
 min_distance_reelle = 2640000000000.0
 max_distance_reelle = 3100000000000.0
 Soleil = NodePath("../Soleil")
@@ -271,24 +186,15 @@ Saturne = NodePath("../Saturne")
 Uranus = NodePath(".")
 Neptune = NodePath("../Neptune")
 masse_corps = 8.68e+25
-periode_relative = 84.01
+periode_relative = 336.044
 position_initiale = Vector3(1860000000000, 2310000000000, -21700000000)
 vitesse_initiale = Vector3(-5320, 4010, 76.7)
 etapes_calcul_par_ecran = 100
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Uranus" unique_id=1131591269]
-transform = Transform3D(5.683, 0, 0, 0, 5.683, 0, 0, 0, 5.683, 0, 0, 0)
-shape = SubResource("SphereShape3D_4xowi")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Uranus" unique_id=1958744073]
-transform = Transform3D(5.683, 0, 0, 0, 5.683, 0, 0, 0, 5.683, 0, 0, 0)
-mesh = SubResource("SphereMesh_jsk3o")
-
-[node name="Neptune" type="RigidBody3D" parent="Astres" unique_id=1641489921 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 0, 0)
-script = ExtResource("1_noarx")
-min_distance_simulee = 117.5
-max_distance_simulee = 122.5
+[node name="Neptune" parent="." unique_id=728117180 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("9_tuemg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0)
+min_distance_simulee = 395.0
+max_distance_simulee = 400.0
 min_distance_reelle = 4340000000000.0
 max_distance_reelle = 4650000000000.0
 Soleil = NodePath("../Soleil")
@@ -300,16 +206,8 @@ Jupiter = NodePath("../Jupiter")
 Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath(".")
-masse_corps = 1.02e+26
-periode_relative = 164.8
-position_initiale = Vector3(4420000000000, -7.58, -94200000000)
+masse_corps = 1.0199999999999999e+26
+periode_relative = 659.164
+position_initiale = Vector3(4420000000000, -758000000000, -94200000000)
 vitesse_initiale = Vector3(912, 5350, -128)
 etapes_calcul_par_ecran = 100
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Astres/Neptune" unique_id=740241153]
-transform = Transform3D(5.673, 0, 0, 0, 5.673, 0, 0, 0, 5.673, 0, 0, 0)
-shape = SubResource("SphereShape3D_4xowi")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Astres/Neptune" unique_id=1048605292]
-transform = Transform3D(5.673, 0, 0, 0, 5.673, 0, 0, 0, 5.673, 0, 0, 0)
-mesh = SubResource("SphereMesh_4arys")

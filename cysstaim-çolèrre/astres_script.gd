@@ -40,7 +40,6 @@ var echelle_temps : float = 1.0
 func _ready() -> void:
 	position_reelle = position_initiale
 	vitesse = vitesse_initiale
-	print(position_reelle, vitesse)
 	pause = false
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -79,10 +78,10 @@ func acceleration_gravitationnelle(autre_corps: RigidBody3D, position_i: Vector3
 	Paramètre :
 	position réelle de l'astre dans le plan 3D
 	"""
-	if autre_corps == self or autre_corps.position_reelle == Vector3.ZERO:
+	if autre_corps == self or autre_corps == null or autre_corps.position_reelle == Vector3.ZERO:
 		return Vector3.ZERO
 
-	var scalaire = -1 * G * autre_corps.masse_corps / (autre_corps.position_reelle - position_i).length()**3
+	var scalaire = G * autre_corps.masse_corps / (autre_corps.position_reelle - position_i).length()**3
 	var acc_g = scalaire * (autre_corps.position_reelle - position_i)
 	
 	return acc_g

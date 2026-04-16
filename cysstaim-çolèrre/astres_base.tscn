@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dx6iqljvxvb8s"]
+
+[ext_resource type="Script" uid="uid://byjt3t2wc8gfu" path="res://astres_script.gd" id="1_ssu43"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kl21w"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_71y64"]
+
+[node name="Astre2_0" type="RigidBody3D" unique_id=138507453]
+script = ExtResource("1_ssu43")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1443144129]
+shape = SubResource("SphereShape3D_kl21w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1367884338]
+mesh = SubResource("SphereMesh_71y64")

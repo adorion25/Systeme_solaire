@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c7o1hwhp6sg8l"]
+
+[ext_resource type="PackedScene" uid="uid://dx6iqljvxvb8s" path="res://astres_base.tscn" id="1_8q3j1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8q3j1"]
+albedo_color = Color(0.33333334, 0.5019608, 0.6666667, 1)
+
+[node name="Uranus" unique_id=138507453 instance=ExtResource("1_8q3j1")]
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=1443144129]
+transform = Transform3D(7.4, 0, 0, 0, 7.4, 0, 0, 0, 7.4, 0, 0, 0)
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=1367884338]
+transform = Transform3D(7.4, 0, 0, 0, 7.4, 0, 0, 0, 7.4, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_8q3j1")

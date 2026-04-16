@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cca27akcbavyu"]
+
+[ext_resource type="PackedScene" uid="uid://dx6iqljvxvb8s" path="res://astres_base.tscn" id="1_xn7oe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xn7oe"]
+albedo_color = Color(0.6, 0.23921569, 0, 1)
+
+[node name="Mars" unique_id=138507453 instance=ExtResource("1_xn7oe")]
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=1443144129]
+transform = Transform3D(6.53, 0, 0, 0, 6.53, 0, 0, 0, 6.53, 0, 0, 0)
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=1367884338]
+transform = Transform3D(6.53, 0, 0, 0, 6.53, 0, 0, 0, 6.53, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_xn7oe")
