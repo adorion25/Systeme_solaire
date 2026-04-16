@@ -43,14 +43,14 @@ environment = SubResource("Environment_4xowi")
 transform = Transform3D(0.50708723, 0.7779334, 0.3710556, -0.86183286, 0.4628162, 0.20747377, -0.010329776, -0.42499524, 0.9051367, 8.801237, 1.5151159, 4.5821605)
 
 [node name="Camera3D" type="Camera3D" parent="Environment_camera" unique_id=1026225519]
-transform = Transform3D(0.9999999400000009, 0, 0, 0, 0.8660254037844387, 0.4999999700000004, 0, -0.49999999999999994, 0.8660253518229153, 0, 60, 120)
+transform = Transform3D(0.9999999400000008, 0, 0, 0, 0.8660254037844387, 0.4999999700000004, 0, -0.49999999999999994, 0.8660253518229153, 0, 60, 120)
 
 [node name="Astres" type="Node3D" parent="." unique_id=282295382]
 
 [node name="Soleil" type="RigidBody3D" parent="Astres" unique_id=1348569142 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune")]
 script = ExtResource("1_noarx")
 max_distance_simulee = 1.0
-max_distance_reelle = 1.0
+max_distance_reelle = 10000000000.0
 Soleil = NodePath(".")
 Mercure = NodePath("../Mercure")
 Venus = NodePath("../Venus")
@@ -300,7 +300,7 @@ Jupiter = NodePath("../Jupiter")
 Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath(".")
-masse_corps = 1.0199999999999999e+26
+masse_corps = 1.02e+26
 periode_relative = 164.8
 position_initiale = Vector3(4420000000000, -7.58, -94200000000)
 vitesse_initiale = Vector3(912, 5350, -128)
