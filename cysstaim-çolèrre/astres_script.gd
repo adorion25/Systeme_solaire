@@ -19,6 +19,7 @@ extends RigidBody3D
 
 @export_group("Simulation gravitationnelle")
 @export var masse_corps : float
+@export var periode : float
 @export var periode_relative : float
 @export var position_initiale : Vector3
 @export var vitesse_initiale : Vector3
@@ -29,7 +30,6 @@ extends RigidBody3D
 var G : float = 6.674e-11
 var position_reelle : Vector3
 var vitesse : Vector3
-var periode : float = 299.819e3
 var temps_ecoule : float
 
 var pause : bool

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bnpcxbieyarvj"]
 
 [ext_resource type="PackedScene" uid="uid://rm367bqg7b75" path="res://soleil.tscn" id="1_4arys"]
+[ext_resource type="Script" uid="uid://bpp7jbg6nlwj8" path="res://camera_3d.gd" id="1_6iypd"]
 [ext_resource type="PackedScene" uid="uid://bevj4x1nwydyk" path="res://mercure.tscn" id="2_6iypd"]
 [ext_resource type="PackedScene" uid="uid://brtkama7wprbs" path="res://venus.tscn" id="3_tereu"]
 [ext_resource type="PackedScene" uid="uid://ct1h1ol6r8ntd" path="res://terre.tscn" id="4_cdqbm"]
@@ -11,7 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://btic5h7rcmng0" path="res://neptune.tscn" id="9_tuemg"]
 
 [sub_resource type="Environment" id="Environment_4xowi"]
-background_mode = 1
+background_mode = 2
+background_color = Color(0, 0, 0.08627451, 1)
+background_energy_multiplier = 1.5
 
 [node name="Système solaire" type="Node3D" unique_id=1593736269]
 
@@ -21,12 +24,17 @@ background_mode = 1
 environment = SubResource("Environment_4xowi")
 
 [node name="Camera3D" type="Camera3D" parent="Environment_camera" unique_id=1026225519]
-transform = Transform3D(1, 0, 0, 0, -0.4999999999999998, 0.8660254037844385, 0, -0.8660254037844387, -0.49999999999999967, 0, 300, -150)
+transform = Transform3D(1.0000000000000002, 0, 0, 0, 0.8660254037844386, -0.49999999999999994, 0, 0.4999999999999999, 0.8660254037844387, 0, -450, 250)
+script = ExtResource("1_6iypd")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Environment_camera" unique_id=994336632]
+light_color = Color(1, 1, 0.57254905, 1)
+omni_range = 4096.0
+omni_attenuation = 0.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment_camera" unique_id=357668207]
-transform = Transform3D(-0.9998138564867644, 0, -0.019293842983286284, 0, 1, 0, 0.019293842983286284, 0, -0.9998138564867644, 0, 0, 0)
+transform = Transform3D(0.9606291094457634, -0.06945949138602633, -0.2690113253040366, -0.21026041366897372, 0.4511574947228553, -0.867322012518505, 0.18161022143368416, 0.889737205028424, 0.4187904409833354, 0, 100, 100)
+light_energy = 0.2
 
 [node name="Soleil" parent="." unique_id=138507453 node_paths=PackedStringArray("Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("1_4arys")]
 max_distance_simulee = 2.0
@@ -41,6 +49,7 @@ Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
 masse_corps = 1.989e+30
+periode = 1.0
 periode_relative = 1.0
 etapes_calcul_par_ecran = 100
 
@@ -60,6 +69,7 @@ Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
 masse_corps = 3.825e+23
+periode = 7600000.0
 periode_relative = 0.964
 position_initiale = Vector3(-39300000000, -34200000000, 1150000000)
 vitesse_initiale = Vector3(30300, -44600, -4630)
@@ -81,7 +91,8 @@ Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
 masse_corps = 4.867e+24
-periode_relative = 2.466
+periode = 19400000.0
+periode_relative = 2.468
 position_initiale = Vector3(104000000000, 28600000000, -6150000000)
 vitesse_initiale = Vector3(-9400, 33700, 1470)
 etapes_calcul_par_ecran = 100
@@ -102,6 +113,7 @@ Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
 masse_corps = 5.97e+24
+periode = 31560000.0
 periode_relative = 4.0
 position_initiale = Vector3(-142000000000, -47400000000, 1640000)
 vitesse_initiale = Vector3(9150, -28200, 1.08)
@@ -123,6 +135,7 @@ Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
 masse_corps = 6.42e+23
+periode = 59400000.0
 periode_relative = 7.524
 position_initiale = Vector3(-115000000000, -188000000000, -1290000000)
 vitesse_initiale = Vector3(20300, -9910, -694)
@@ -144,6 +157,7 @@ Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
 masse_corps = 1.9e+27
+periode = 379000000.0
 periode_relative = 47.448
 position_initiale = Vector3(6970000000000, 291000000000, -15500000000)
 vitesse_initiale = Vector3(-4910, 12000, 95.6)
@@ -165,7 +179,8 @@ Saturne = NodePath(".")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath("../Neptune")
 masse_corps = 5.68e+26
-periode_relative = 117.828
+periode = 947000000.0
+periode_relative = 120.024
 position_initiale = Vector3(1410000000000, -413000000000, -53800000000)
 vitesse_initiale = Vector3(2440, 9010, -352)
 etapes_calcul_par_ecran = 100
@@ -186,6 +201,7 @@ Saturne = NodePath("../Saturne")
 Uranus = NodePath(".")
 Neptune = NodePath("../Neptune")
 masse_corps = 8.68e+25
+periode = 2650000000.0
 periode_relative = 336.044
 position_initiale = Vector3(1860000000000, 2310000000000, -21700000000)
 vitesse_initiale = Vector3(-5320, 4010, 76.7)
@@ -206,7 +222,8 @@ Jupiter = NodePath("../Jupiter")
 Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath(".")
-masse_corps = 1.0199999999999999e+26
+masse_corps = 1.02e+26
+periode = 5210000000.0
 periode_relative = 659.164
 position_initiale = Vector3(4420000000000, -758000000000, -94200000000)
 vitesse_initiale = Vector3(912, 5350, -128)
