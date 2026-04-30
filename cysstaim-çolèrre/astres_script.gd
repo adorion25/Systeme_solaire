@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+@export var interface : Node
+
 @export_group("Paramètre de conversion simulation")
 @export var min_distance_simulee : float
 @export var max_distance_simulee : float
@@ -34,7 +36,7 @@ var temps_ecoule : float
 
 var pause : bool
 
-var echelle_temps : float = 1.0
+var echelle_temps : float = 2629756.8
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
