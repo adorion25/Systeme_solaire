@@ -38,7 +38,7 @@ var temps_ecoule : float
 
 var pause : bool
 
-var echelle_temps : float = 1
+static var echelle_temps : float = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 	if pause :
 		return
 
-	appliquer_runge_kutta(delta*echelle_temps)
+	appliquer_runge_kutta(delta*echelle_temps / 3)
 
 	position = conv_position_reelle_a_simulee()
 	

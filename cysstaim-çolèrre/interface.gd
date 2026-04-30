@@ -57,6 +57,5 @@ func _on_h_slider_value_changed(valeur: float) -> void:
 	Retour:
 	une chaîne de caractères représentant ce nombre
 	"""
-	#lune_1.echelle_temps = valeur
-	#lune_2.echelle_temps = valeur
-	vitesse_simulation.text = "Chaque seconde vaut" + "%.1f" % valeur + "mois terrestres"
+	Astre.echelle_temps = valeur
+	vitesse_simulation.text = "Chaque seconde vaut " + "%.1f" % valeur + " mois terrestres"
