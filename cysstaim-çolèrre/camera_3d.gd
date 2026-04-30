@@ -8,19 +8,24 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Gauche"):
-		position += Vector3(-20, 0, 0)
-	elif Input.is_action_just_pressed("Droite"):
-		position += Vector3(20, 0, 0)
-	elif Input.is_action_just_pressed("Devant"):
-		position += Vector3(0, 20, 0)
-	elif Input.is_action_just_pressed("Derrière"):
-		position += Vector3(0, -20, 0)
-	elif Input.is_action_just_pressed("Inclinaison_haut"):
-		rotation += Vector3(PI/24, 0, 0)
-	elif Input.is_action_just_pressed("Inclinaison_bas"):
-		rotation += Vector3(-PI/24, 0, 0)
-	elif Input.is_action_just_pressed("Rotation_droite"):
-		rotation += Vector3(-PI/24, PI/24, PI/8)
-	elif Input.is_action_just_pressed("Rotation_gauche"):
-		rotation += Vector3(PI/24, -PI/24, -PI/8)
+	var vitesse_deplacement = 2
+	if Input.is_action_pressed("Gauche"):
+		translate_object_local(Vector3.LEFT * vitesse_deplacement)
+	elif Input.is_action_pressed("Droite"):
+		translate_object_local(Vector3.RIGHT * vitesse_deplacement)
+	elif Input.is_action_pressed("Devant"):
+		translate_object_local(Vector3.FORWARD * vitesse_deplacement)
+	elif Input.is_action_pressed("Derrière"):
+		translate_object_local(Vector3.BACK * vitesse_deplacement)
+
+#RÉGLER PROPBLÈMES DE ROTATION GAUCHE-DROITE ET VOIR SI LA SOLUTION PEUT REMPLACER L'INCLISAISON HAUT-BAS
+	var vitesse_rotation = PI / 100
+	
+	if Input.is_action_pressed("Inclinaison_haut"):
+		rotate_object_local(Vector3.RIGHT, vitesse_rotation)
+	elif Input.is_action_pressed("Inclinaison_bas"):
+		rotate_object_local(Vector3.LEFT, vitesse_rotation)
+	elif Input.is_action_pressed("Rotation_droite"):
+		global_rotate(Vector3.BACK, -vitesse_rotation)
+	elif Input.is_action_pressed("Rotation_gauche"):
+		global_rotate(Vector3.BACK, vitesse_rotation)

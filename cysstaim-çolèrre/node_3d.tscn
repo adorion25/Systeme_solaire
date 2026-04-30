@@ -24,7 +24,7 @@ background_energy_multiplier = 1.5
 environment = SubResource("Environment_4xowi")
 
 [node name="Camera3D" type="Camera3D" parent="Environment_camera" unique_id=1026225519]
-transform = Transform3D(1.0000000000000002, 0, 0, 0, 0.8660254037844386, -0.49999999999999994, 0, 0.4999999999999999, 0.8660254037844387, 0, -450, 250)
+transform = Transform3D(1.0000000000000002, 0, 0, 0, 0.5, -0.8660254037844386, 0, 0.8660254037844385, 0.5000000000000001, 0, -450, 250)
 script = ExtResource("1_6iypd")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Environment_camera" unique_id=994336632]
@@ -222,7 +222,7 @@ Jupiter = NodePath("../Jupiter")
 Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath(".")
-masse_corps = 1.02e+26
+masse_corps = 1.0199999999999999e+26
 periode = 5210000000.0
 periode_relative = 659.164
 position_initiale = Vector3(4420000000000, -758000000000, -94200000000)
