@@ -36,7 +36,7 @@ var temps_ecoule : float
 
 var pause : bool
 
-var echelle_temps : float = 2629756.8
+var echelle_temps : float = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
