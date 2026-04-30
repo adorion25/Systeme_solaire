@@ -14,3 +14,5 @@ shape = SubResource("SphereShape3D_kl21w")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1367884338]
 mesh = SubResource("SphereMesh_71y64")
+
+[connection signal="input_event" from="." to="." method="_on_clic"]

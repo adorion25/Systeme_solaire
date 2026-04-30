@@ -1,7 +1,7 @@
 extends Button
 
 var pause : bool
-@export var interface : Interface
+@export var interface : interface
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

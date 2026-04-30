@@ -1,5 +1,7 @@
 extends RigidBody3D
+class_name Astre
 
+var astre_clique : Astre
 @export var interface : Node
 
 @export_group("Paramètre de conversion simulation")
@@ -130,3 +132,9 @@ func mettre_en_pause(mode_pause: bool) -> void:
 	mode_pause -- booléen contenant True si la simulation est en pause.
 	"""
 	pause = mode_pause
+
+
+func _on_clic(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		interface.astre_clique = self
+		print(interface.astre_clique)
