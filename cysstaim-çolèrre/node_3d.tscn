@@ -25,11 +25,8 @@ background_energy_multiplier = 1.5
 environment = SubResource("Environment_4xowi")
 
 [node name="Camera3D" type="Camera3D" parent="Environment_camera" unique_id=1026225519]
-<<<<<<< HEAD
-transform = Transform3D(1.0000000000000002, 0, 0, 0, 0.5, -0.8660254037844386, 0, 0.8660254037844385, 0.5000000000000001, 0, -450, 250)
-=======
+
 transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, -450, 250)
->>>>>>> b7907dd87578e15a7984520fe264056782a354b7
 script = ExtResource("1_6iypd")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Environment_camera" unique_id=994336632]
