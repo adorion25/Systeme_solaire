@@ -17,7 +17,11 @@ func _process(delta:float) -> void:
 	pass
 	#if astre_clique != null:
 		#nom_astre.text = str(astre_clique.var)
+<<<<<<< HEAD
 		#masse_du_corps.text = str(astre_clique.masse_corps)
+=======
+		#masse_du_corps.text = str(astre_clique.var)
+>>>>>>> refs/remotes/origin/main
 		#vitesse_au_perihelie.text = str(astre_clique.var)
 		#excentricite_de_lorbite.text = str(astre_clique.var)
 		#periode_revolution_autour_soleil.text = str(astre_clique.var)

@@ -35,7 +35,7 @@ omni_attenuation = 0.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment_camera" unique_id=357668207]
 transform = Transform3D(0.9606291, -0.06945949, -0.26901132, -0.21026042, 0.45115748, -0.867322, 0.18161023, 0.8897372, 0.41879043, 0, 100, 100)
-light_energy = 0.2
+light_energy = 10.469
 
 [node name="Soleil" parent="." unique_id=138507453 node_paths=PackedStringArray("interface", "Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("1_4arys")]
 interface = NodePath("../Interface")
