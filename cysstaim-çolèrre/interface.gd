@@ -15,6 +15,7 @@ var astre_clique : Node
 
 func _process(delta:float) -> void:
 	pass
+
 	if astre_clique != null:
 		nom_astre.text = str(astre_clique.name)
 		#masse_du_corps.text = str(astre_clique.var)
