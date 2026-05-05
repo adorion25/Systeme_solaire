@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 		translate_object_local(Vector3.FORWARD * vitesse_deplacement)
 	elif Input.is_action_pressed("Derrière"):
 		translate_object_local(Vector3.BACK * vitesse_deplacement)
-	
+
 	var vitesse_rotation = PI / 100
 	
 	if Input.is_action_pressed("Inclinaison_haut"):

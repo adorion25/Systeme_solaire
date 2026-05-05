@@ -127,4 +127,3 @@ func appliquer_runge_kutta(temps_dernier_ecran : float) -> void:
 func _on_clic(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		interface.astre_clique = self
-		print(interface.astre_clique)

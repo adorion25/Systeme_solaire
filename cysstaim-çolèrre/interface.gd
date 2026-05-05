@@ -15,8 +15,9 @@ var astre_clique : Node
 
 func _process(delta:float) -> void:
 	pass
-	#if astre_clique != null:
-		#nom_astre.text = str(astre_clique.var)
+
+	if astre_clique != null:
+		nom_astre.text = str(astre_clique.name)
 		#masse_du_corps.text = str(astre_clique.var)
 		#vitesse_au_perihelie.text = str(astre_clique.var)
 		#excentricite_de_lorbite.text = str(astre_clique.var)
@@ -49,4 +50,4 @@ func _on_h_slider_value_changed(valeur: float) -> void:
 	une chaîne de caractères représentant ce nombre
 	"""
 	Astre.echelle_temps = valeur
-	vitesse_simulation.text = "Chaque seconde vaut " + "%.1f" % valeur + " mois terrestres"
+	vitesse_simulation.text = "Chaque seconde vaut " + "%.2f" % valeur + " mois terrestres"
