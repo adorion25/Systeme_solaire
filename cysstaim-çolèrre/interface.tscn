@@ -27,6 +27,7 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer Titre" unique_id=141493367]
 layout_mode = 2
+size_flags_horizontal = 0
 script = ExtResource("1_kyn48")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer Titre/MarginContainer" unique_id=235252506]
@@ -40,11 +41,11 @@ text = "Simulation du système solaire"
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=10007798]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=721864335 node_paths=PackedStringArray("interface")]
+[node name="Button" type="Button" parent="VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=721864335]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Pause"
 script = ExtResource("2_oi7g3")
-interface = NodePath("../../../../..")
 
 [node name="PanelContainer Données" type="PanelContainer" parent="VBoxContainer" unique_id=1098302464]
 layout_mode = 2

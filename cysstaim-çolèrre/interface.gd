@@ -18,16 +18,15 @@ func _process(delta:float) -> void:
 
 	if astre_clique != null:
 		nom_astre.text = str(astre_clique.name)
-		#masse_du_corps.text = str(astre_clique.var)
-		#vitesse_au_perihelie.text = str(astre_clique.var)
+		masse_du_corps.text = str(format_scientifique(astre_clique.masse_corps)) + " kg"
+		#vitesse_au_perihelie.text = str(astre_clique.var) + " m/s"
 		#excentricite_de_lorbite.text = str(astre_clique.var)
-		#periode_revolution_autour_soleil.text = str(astre_clique.var)
-		#periode_rotation_sur_soi.text = str(astre_clique.var)
-	#vitesse_simulation.text = str(astre_clique.var)
+		#periode_revolution_autour_soleil.text = str(astre_clique.var) + " s"
+		#periode_rotation_sur_soi.text = str(astre_clique.var) + " s"
 
 
 func format_scientifique(valeur : float) -> String:
-	"""Converti en format scientifique les nombres décimaux avec 3 décimales
+	"""Converti en format scientifique les nombres décimaux avec 3 décimales et uniquement 1 chiffre avant la virgule
 	
 	Parametre:
 	valeur -- la valeur à afficher de façon scientifique
@@ -37,6 +36,10 @@ func format_scientifique(valeur : float) -> String:
 	"""
 	var nombre_decimales = int(log(valeur) / log(10))
 	var nombre_presente = valeur / 10**nombre_decimales
+	while nombre_presente >= 10.0:
+		nombre_presente = nombre_presente/10.0
+		nombre_decimales += 1
+
 	return "%.3f" % nombre_presente + "e" + "%s" % nombre_decimales
 
 
