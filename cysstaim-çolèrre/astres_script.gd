@@ -36,7 +36,7 @@ var position_reelle : Vector3
 var vitesse : Vector3
 var temps_ecoule : float
 
-var pause : bool
+static var pause : bool = false
 
 static var echelle_temps : float = 1
 
@@ -137,4 +137,3 @@ func mettre_en_pause(mode_pause: bool) -> void:
 func _on_clic(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		interface.astre_clique = self
-		print(interface.astre_clique)

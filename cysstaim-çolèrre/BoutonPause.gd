@@ -1,19 +1,15 @@
 extends Button
 
-var pause : bool
-@export var interface : interface
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pause = false
+	Astre.pause = false
 	pressed.connect(changer_mode_pause)
 
 
 func changer_mode_pause() -> void:
-	pause = !pause
-	interface.changer_mode_pause(pause)
+	Astre.pause = !Astre.pause
 	
-	if pause :
+	if Astre.pause :
 		text = "Reprendre"
 	else :
 		text = "Pause"

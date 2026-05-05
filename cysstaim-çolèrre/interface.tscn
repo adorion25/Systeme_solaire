@@ -3,12 +3,13 @@
 [ext_resource type="Script" uid="uid://d03a04mh24msu" path="res://interface.gd" id="1_kyn48"]
 [ext_resource type="Script" uid="uid://blopcvwejs7mq" path="res://BoutonPause.gd" id="2_oi7g3"]
 
-[node name="Interface" type="Control" unique_id=1115889947 node_paths=PackedStringArray("masse_du_corps", "vitesse_au_perihelie", "excentricite_de_lorbite", "periode_revolution_autour_soleil", "periode_rotation_sur_soi", "vitesse_simulation")]
+[node name="Interface" type="Control" unique_id=1115889947 node_paths=PackedStringArray("nom_astre", "masse_du_corps", "vitesse_au_perihelie", "excentricite_de_lorbite", "periode_revolution_autour_soleil", "periode_rotation_sur_soi", "vitesse_simulation")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_kyn48")
+nom_astre = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerNom/HBoxContainer/NomAstre")
 masse_du_corps = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col/Masse")
 vitesse_au_perihelie = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col/Vitesse")
 excentricite_de_lorbite = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col/Excentricité")
@@ -130,7 +131,7 @@ text = "Période"
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer" unique_id=824075001]
 layout_mode = 2
-min_value = 0.1
+min_value = 0.01
 max_value = 120.0
 step = 0.01
 value = 1.0
@@ -144,7 +145,7 @@ layout_mode = 2
 
 [node name="vitesse_simulation" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer" unique_id=513036715]
 layout_mode = 2
-text = "Chaque seconde vaut 1.0 mois terrestres"
+text = "Chaque seconde vaut 1.00 mois terrestres"
 horizontal_alignment = 1
 
 [connection signal="value_changed" from="VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
