@@ -17,21 +17,12 @@ func _process(delta:float) -> void:
 	pass
 	#if astre_clique != null:
 		#nom_astre.text = str(astre_clique.var)
-
 		#masse_du_corps.text = str(astre_clique.var)
-
 		#vitesse_au_perihelie.text = str(astre_clique.var)
 		#excentricite_de_lorbite.text = str(astre_clique.var)
 		#periode_revolution_autour_soleil.text = str(astre_clique.var)
 		#periode_rotation_sur_soi.text = str(astre_clique.var)
 	#vitesse_simulation.text = str(astre_clique.var)
-
-func changer_mode_pause(mode_pause : bool) -> void:
-	"""Change l'état de pause à chacun des astres
-	
-	Paramètre :
-	etat_pause -- est-ce que la simulation est en pause ou non """
-	#lune_1.mettre_en_pause(mode_pause)
 
 
 func format_scientifique(valeur : float) -> String:

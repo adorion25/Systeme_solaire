@@ -35,8 +35,8 @@ var G : float = 6.674e-11
 var position_reelle : Vector3
 var vitesse : Vector3
 var temps_ecoule : float
+static var pause : bool = false
 
-var pause : bool
 
 static var echelle_temps : float = 1
 
@@ -44,7 +44,6 @@ static var echelle_temps : float = 1
 func _ready() -> void:
 	position_reelle = position_initiale
 	vitesse = vitesse_initiale
-	pause = false
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -123,15 +122,6 @@ func appliquer_runge_kutta(temps_dernier_ecran : float) -> void:
 		
 		position_reelle += vitesse * h
 		temps += h
-	
-
-func mettre_en_pause(mode_pause: bool) -> void:
-	"""Change le mode de la simulation (pause/"play")
-	
-	Parametre :
-	mode_pause -- booléen contenant True si la simulation est en pause.
-	"""
-	pause = mode_pause
 
 
 func _on_clic(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:

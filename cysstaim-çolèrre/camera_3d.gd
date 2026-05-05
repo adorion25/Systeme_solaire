@@ -11,14 +11,16 @@ func _process(delta: float) -> void:
 	var vitesse_deplacement = 2
 	if Input.is_action_pressed("Gauche"):
 		translate_object_local(Vector3.LEFT * vitesse_deplacement)
+		vitesse_deplacement += 0.1
+		if Input.is_action_just_released():
+			vitesse_deplacement = 2
 	elif Input.is_action_pressed("Droite"):
 		translate_object_local(Vector3.RIGHT * vitesse_deplacement)
 	elif Input.is_action_pressed("Devant"):
 		translate_object_local(Vector3.FORWARD * vitesse_deplacement)
 	elif Input.is_action_pressed("Derrière"):
 		translate_object_local(Vector3.BACK * vitesse_deplacement)
-
-#RÉGLER PROPBLÈMES DE ROTATION GAUCHE-DROITE ET VOIR SI LA SOLUTION PEUT REMPLACER L'INCLISAISON HAUT-BAS
+	
 	var vitesse_rotation = PI / 100
 	
 	if Input.is_action_pressed("Inclinaison_haut"):
