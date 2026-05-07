@@ -78,6 +78,7 @@ periode = 7600000.0
 periode_relative = 0.964
 position_initiale = Vector3(-32649900000, -56118100000, -26543400000)
 vitesse_initiale = Vector3(33312.3, -16768.6, -12409.5)
+excentricite = 0.2056359
 etapes_calcul_par_ecran = 100
 
 [node name="Venus" parent="." unique_id=234343551 node_paths=PackedStringArray("interface", "Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("3_tereu")]
@@ -101,6 +102,7 @@ periode = 19400000.0
 periode_relative = 2.468
 position_initiale = Vector3(12839400000, -98935900000, -45325600000)
 vitesse_initiale = Vector3(34535, 4583.85, -121.752)
+excentricite = 0.0067767
 etapes_calcul_par_ecran = 100
 
 [node name="Terre" parent="." unique_id=1146063944 node_paths=PackedStringArray("interface", "Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("4_cdqbm")]
@@ -124,6 +126,7 @@ periode = 31560000.0
 periode_relative = 4.0
 position_initiale = Vector3(-26532900000, 132064000000, 57268500000)
 vitesse_initiale = Vector3(-29776.3, -4951.16, -2146.38)
+excentricite = 0.0167112
 etapes_calcul_par_ecran = 100
 
 [node name="Mars" parent="." unique_id=593639474 node_paths=PackedStringArray("interface", "Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("5_imku0")]
@@ -147,6 +150,7 @@ periode = 59400000.0
 periode_relative = 7.524
 position_initiale = Vector3(50492900000, -188911000000, -87982500000)
 vitesse_initiale = Vector3(24459.4, 7385.96, 2728.1)
+excentricite = 0.0933941
 etapes_calcul_par_ecran = 100
 
 [node name="Jupiter" parent="." unique_id=1493003131 node_paths=PackedStringArray("interface", "Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("6_wlxy5")]
@@ -170,6 +174,7 @@ periode = 379000000.0
 periode_relative = 47.448
 position_initiale = Vector3(-253879000000, 674699000000, 295381000000)
 vitesse_initiale = Vector3(-12507.2, -3455.54, -1176.64)
+excentricite = 0.0483862
 etapes_calcul_par_ecran = 100
 
 [node name="Saturne" parent="." unique_id=1711202820 node_paths=PackedStringArray("interface", "Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("7_3v7ru")]
@@ -193,6 +198,7 @@ periode = 947000000.0
 periode_relative = 120.024
 position_initiale = Vector3(1421820000000, 57396000000, -37532800000)
 vitesse_initiale = Vector3(-789.389, 8894.36, 3707.79)
+excentricite = 0.0538618
 etapes_calcul_par_ecran = 100
 
 [node name="Uranus" parent="." unique_id=192694237 node_paths=PackedStringArray("interface", "Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("8_tcnuu")]
@@ -216,6 +222,7 @@ periode = 2650000000.0
 periode_relative = 336.044
 position_initiale = Vector3(1477610000000, 2309000000000, 990380000000)
 vitesse_initiale = Vector3(-5920.03, 2841.05, 1328)
+excentricite = 0.0472574
 etapes_calcul_par_ecran = 100
 
 [node name="Neptune" parent="." unique_id=728117180 node_paths=PackedStringArray("interface", "Soleil", "Mercure", "Venus", "Terre", "Mars", "Jupiter", "Saturne", "Uranus", "Neptune") instance=ExtResource("9_tuemg")]
@@ -234,11 +241,12 @@ Jupiter = NodePath("../Jupiter")
 Saturne = NodePath("../Saturne")
 Uranus = NodePath("../Uranus")
 Neptune = NodePath(".")
-masse_corps = 1.02e+26
+masse_corps = 1.0199999999999999e+26
 periode = 5210000000.0
 periode_relative = 659.164
 position_initiale = Vector3(4468350000000, 112053000000, -65380800000)
 vitesse_initiale = Vector3(-29.193, 5059.17, 2073.97)
+excentricite = 0.0085905
 etapes_calcul_par_ecran = 100
 
 [node name="Interface" parent="." unique_id=1115889947 instance=ExtResource("11_tereu")]
