@@ -27,6 +27,7 @@ var astre_clique : Astre
 @export var periode_relative : float
 @export var position_initiale : Vector3
 @export var vitesse_initiale : Vector3
+@export var excentricite : float
 
 @export_group("Paramètres de simulation")
 @export var etapes_calcul_par_ecran : int
