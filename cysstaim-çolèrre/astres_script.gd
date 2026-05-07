@@ -10,16 +10,16 @@ var astre_clique : Astre
 @export var min_distance_reelle  : float
 @export var max_distance_reelle  : float
 
-@export_group("Astres gravitationnels")
-@export var Soleil  : RigidBody3D
-@export var Mercure : RigidBody3D
-@export var Venus   : RigidBody3D
-@export var Terre   : RigidBody3D
-@export var Mars    : RigidBody3D
-@export var Jupiter : RigidBody3D
-@export var Saturne : RigidBody3D
-@export var Uranus  : RigidBody3D
-@export var Neptune : RigidBody3D
+@onready var Soleil  : RigidBody3D = %Soleil
+@onready var Mercure : RigidBody3D = %Mercure
+@onready var Venus   : RigidBody3D = %Venus
+@onready var Terre   : RigidBody3D = %Terre
+@onready var Mars    : RigidBody3D = %Mars
+@onready var Jupiter : RigidBody3D = %Jupiter
+@onready var Saturne : RigidBody3D = %Saturne
+@onready var Uranus  : RigidBody3D = %Uranus
+@onready var Neptune : RigidBody3D = %Neptune
+@onready var liste_astres = [Soleil, Mercure, Venus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune]
 
 @export_group("Simulation gravitationnelle")
 @export var masse_corps : float
@@ -96,9 +96,11 @@ func acceleration_totale(position_i: Vector3) -> Vector3:
 	Retour:
 	Vecteur d'accélération gravitaionnelle totale agissant sur le corps.
 	"""
+	var a_tot : Vector3
+	for i in len(liste_astres):
+		a_tot += acceleration_gravitationnelle(liste_astres[i], position_i)
 	
-	var a_tot = acceleration_gravitationnelle(Soleil, position_i) + acceleration_gravitationnelle(Mercure, position_i) + acceleration_gravitationnelle(Venus, position_i) + acceleration_gravitationnelle(Terre, position_i) + acceleration_gravitationnelle(Mars, position_i) + acceleration_gravitationnelle(Jupiter, position_i) + acceleration_gravitationnelle(Saturne, position_i) + acceleration_gravitationnelle(Uranus, position_i) + acceleration_gravitationnelle(Neptune, position_i)
-	
+	#var a_tot = acceleration_gravitationnelle(Soleil, position_i) + acceleration_gravitationnelle(Mercure, position_i) + acceleration_gravitationnelle(Venus, position_i) + acceleration_gravitationnelle(Terre, position_i) + acceleration_gravitationnelle(Mars, position_i) + acceleration_gravitationnelle(Jupiter, position_i) + acceleration_gravitationnelle(Saturne, position_i) + acceleration_gravitationnelle(Uranus, position_i) + acceleration_gravitationnelle(Neptune, position_i)
 	return a_tot
 	
 func appliquer_runge_kutta(temps_dernier_ecran : float) -> void:
