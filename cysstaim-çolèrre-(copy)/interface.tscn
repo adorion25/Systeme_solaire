@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://sih1ldeg6fm2"]
+
+[ext_resource type="Script" uid="uid://d03a04mh24msu" path="res://interface.gd" id="1_kyn48"]
+[ext_resource type="Script" uid="uid://blopcvwejs7mq" path="res://BoutonPause.gd" id="2_oi7g3"]
+
+[node name="Interface" type="Control" unique_id=1115889947 node_paths=PackedStringArray("nom_astre", "masse_du_corps", "vitesse_au_perihelie", "excentricite_de_lorbite", "periode_revolution_autour_soleil", "periode_rotation_sur_soi", "vitesse_simulation")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_kyn48")
+nom_astre = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerNom/HBoxContainer/NomAstre")
+masse_du_corps = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col/Masse")
+vitesse_au_perihelie = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col/Vitesse")
+excentricite_de_lorbite = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col/Excentricité")
+periode_revolution_autour_soleil = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col/Nom Période Soleil")
+periode_rotation_sur_soi = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col/Période Soi")
+vitesse_simulation = NodePath("VBoxContainer/PanelContainer/MarginContainer/vitesse_simulation")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1837051428]
+layout_mode = 0
+offset_right = 395.0
+offset_bottom = 112.0
+
+[node name="PanelContainer Titre" type="PanelContainer" parent="VBoxContainer" unique_id=1879963799]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer Titre" unique_id=141493367]
+layout_mode = 2
+size_flags_horizontal = 0
+script = ExtResource("1_kyn48")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer Titre/MarginContainer" unique_id=235252506]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=585586591]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Simulation du système solaire"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=10007798]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/PanelContainer Titre/MarginContainer/HBoxContainer" unique_id=721864335]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Pause"
+script = ExtResource("2_oi7g3")
+
+[node name="PanelContainer Données" type="PanelContainer" parent="VBoxContainer" unique_id=1098302464]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer Données" unique_id=269461939]
+layout_mode = 2
+
+[node name="MarginContainerNom" type="MarginContainer" parent="VBoxContainer/PanelContainer Données/VBoxContainer" unique_id=1118504570]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerNom" unique_id=1941932165]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Astre" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerNom/HBoxContainer" unique_id=1473229454]
+layout_mode = 2
+text = "Astre :"
+
+[node name="NomAstre" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerNom/HBoxContainer" unique_id=1293918039]
+layout_mode = 2
+text = "planète xyz"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/PanelContainer Données/VBoxContainer" unique_id=822031328]
+layout_mode = 2
+
+[node name="MarginContainerVar" type="MarginContainer" parent="VBoxContainer/PanelContainer Données/VBoxContainer" unique_id=1230213573]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar" unique_id=730473582]
+layout_mode = 2
+
+[node name="GridContainer3col" type="GridContainer" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer" unique_id=752489414]
+layout_mode = 2
+columns = 2
+
+[node name="Nom Masse" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col" unique_id=497748557]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Masse du corps"
+
+[node name="Masse" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col" unique_id=196952794]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Masse"
+
+[node name="Nom Vitesse" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col" unique_id=1353402173]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Vitesse au périhélie"
+
+[node name="Vitesse" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col" unique_id=452391967]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Vitesse"
+
+[node name="Nom Excentricité" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col" unique_id=2109086870]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Excentricité de l’orbite"
+
+[node name="Excentricité" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col" unique_id=1424470352]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Excentricité"
+
+[node name="Nom Période Soleil" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col" unique_id=957746302]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Période de révolution autour du soleil"
+
+[node name="Période Soleil" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col" unique_id=1228715288]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Période"
+
+[node name="Nom Période Soi" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col" unique_id=919499037]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Période de rotation sur lui-même"
+
+[node name="Période Soi" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col" unique_id=464454727]
+layout_mode = 2
+text = "Période"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer" unique_id=824075001]
+layout_mode = 2
+min_value = 0.01
+max_value = 120.0
+step = 0.01
+value = 1.0
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1968483797]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer" unique_id=690956770]
+layout_mode = 2
+
+[node name="vitesse_simulation" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer" unique_id=513036715]
+layout_mode = 2
+text = "Chaque seconde vaut 1.00 mois terrestres"
+horizontal_alignment = 1
+
+[connection signal="value_changed" from="VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

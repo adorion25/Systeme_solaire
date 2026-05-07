@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://btic5h7rcmng0"]
+
+[ext_resource type="PackedScene" uid="uid://dx6iqljvxvb8s" path="res://astres_base.tscn" id="1_ktkx8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktkx8"]
+albedo_color = Color(0.21176471, 0.40784314, 0.5882353, 1)
+
+[node name="Neptune" unique_id=138507453 instance=ExtResource("1_ktkx8")]
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=1443144129]
+transform = Transform3D(7.39, 0, 0, 0, 7.39, 0, 0, 0, 7.39, 0, 0, 0)
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=1367884338]
+transform = Transform3D(7.39, 0, 0, 0, 7.39, 0, 0, 0, 7.39, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_ktkx8")

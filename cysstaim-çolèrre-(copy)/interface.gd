@@ -35,9 +35,7 @@ func format_scientifique(valeur : float) -> String:
 	une chaîne de caractères représentant ce nombre
 	"""
 	var nombre_decimales = int(log(valeur) / log(10))
-	print(nombre_decimales)
 	var nombre_presente = valeur / 10**nombre_decimales
-	print(nombre_presente)
 	while nombre_presente >= 10.0:
 		nombre_presente = nombre_presente/10.0
 		nombre_decimales += 1
