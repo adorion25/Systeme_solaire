@@ -19,7 +19,7 @@ var astre_clique : Astre
 @onready var Saturne : RigidBody3D = %Saturne
 @onready var Uranus  : RigidBody3D = %Uranus
 @onready var Neptune : RigidBody3D = %Neptune
-@onready var liste_astres = [Soleil, Mercure, Venus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune]
+static var liste_astres = []
 
 @export_group("Simulation gravitationnelle")
 @export var masse_corps : float
@@ -46,12 +46,15 @@ func _ready() -> void:
 	position_reelle = position_initiale
 	vitesse = vitesse_initiale
 	
+	#Ajoute l'astre exécutant le script dans une liste pour avoir le nombre total d'astres
+	liste_astres.append(self)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if pause :
 		return
 
-	appliquer_runge_kutta(delta*echelle_temps / 3)
+	appliquer_runge_kutta(delta*echelle_temps / 3) 
 
 	position = conv_position_reelle_a_simulee()
 	
@@ -92,7 +95,7 @@ func acceleration_gravitationnelle(autre_corps: RigidBody3D, position_i: Vector3
 	
 func acceleration_totale(position_i: Vector3) -> Vector3:
 	"""Additione toutes les accélérations causées par les autres astres pour 
-	en n'avoir qu'une seule.
+	en n'avoir qu'une seule, selon le nombre d'astres présents.
 	
 	Retour:
 	Vecteur d'accélération gravitaionnelle totale agissant sur le corps.
@@ -100,8 +103,7 @@ func acceleration_totale(position_i: Vector3) -> Vector3:
 	var a_tot : Vector3
 	for i in len(liste_astres):
 		a_tot += acceleration_gravitationnelle(liste_astres[i], position_i)
-	
-	#var a_tot = acceleration_gravitationnelle(Soleil, position_i) + acceleration_gravitationnelle(Mercure, position_i) + acceleration_gravitationnelle(Venus, position_i) + acceleration_gravitationnelle(Terre, position_i) + acceleration_gravitationnelle(Mars, position_i) + acceleration_gravitationnelle(Jupiter, position_i) + acceleration_gravitationnelle(Saturne, position_i) + acceleration_gravitationnelle(Uranus, position_i) + acceleration_gravitationnelle(Neptune, position_i)
+
 	return a_tot
 	
 func appliquer_runge_kutta(temps_dernier_ecran : float) -> void:
@@ -125,7 +127,6 @@ func appliquer_runge_kutta(temps_dernier_ecran : float) -> void:
 		
 		position_reelle += vitesse * h
 		temps += h
-
 
 func _on_clic(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
