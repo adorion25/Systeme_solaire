@@ -10,15 +10,6 @@ var astre_clique : Astre
 @export var min_distance_reelle  : float
 @export var max_distance_reelle  : float
 
-@onready var Soleil  : RigidBody3D = %Soleil
-@onready var Mercure : RigidBody3D = %Mercure
-@onready var Venus   : RigidBody3D = %Venus
-@onready var Terre   : RigidBody3D = %Terre
-@onready var Mars    : RigidBody3D = %Mars
-@onready var Jupiter : RigidBody3D = %Jupiter
-@onready var Saturne : RigidBody3D = %Saturne
-@onready var Uranus  : RigidBody3D = %Uranus
-@onready var Neptune : RigidBody3D = %Neptune
 static var liste_astres = []
 
 @export_group("Simulation gravitationnelle")
@@ -100,7 +91,7 @@ func acceleration_totale(position_i: Vector3) -> Vector3:
 	Retour:
 	Vecteur d'accélération gravitaionnelle totale agissant sur le corps.
 	"""
-	var a_tot : Vector3
+	var a_tot = Vector3(0, 0, 0)
 	for i in len(liste_astres):
 		a_tot += acceleration_gravitationnelle(liste_astres[i], position_i)
 

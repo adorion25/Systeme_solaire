@@ -38,7 +38,6 @@ transform = Transform3D(0.9606291, -0.06945949, -0.26901132, -0.21026042, 0.4511
 light_energy = 10.469
 
 [node name="Soleil" parent="." unique_id=138507453 node_paths=PackedStringArray("interface") instance=ExtResource("1_4arys")]
-unique_name_in_owner = true
 interface = NodePath("../Interface")
 max_distance_simulee = 2.0
 max_distance_reelle = 696350000.0
@@ -50,7 +49,6 @@ vitesse_initiale = Vector3(12.425, 0.376, -0.093)
 etapes_calcul_par_ecran = 100
 
 [node name="Mercure" parent="." unique_id=1313541899 node_paths=PackedStringArray("interface") instance=ExtResource("2_6iypd")]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
 interface = NodePath("../Interface")
 min_distance_simulee = 45.0
@@ -66,7 +64,6 @@ excentricite = 0.2056359
 etapes_calcul_par_ecran = 100
 
 [node name="Venus" parent="." unique_id=234343551 node_paths=PackedStringArray("interface") instance=ExtResource("3_tereu")]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
 interface = NodePath("../Interface")
 min_distance_simulee = 95.0
@@ -82,7 +79,6 @@ excentricite = 0.0067767
 etapes_calcul_par_ecran = 100
 
 [node name="Terre" parent="." unique_id=1146063944 node_paths=PackedStringArray("interface") instance=ExtResource("4_cdqbm")]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 0, 0)
 interface = NodePath("../Interface")
 min_distance_simulee = 145.0
@@ -98,7 +94,6 @@ excentricite = 0.0167112
 etapes_calcul_par_ecran = 100
 
 [node name="Mars" parent="." unique_id=593639474 node_paths=PackedStringArray("interface") instance=ExtResource("5_imku0")]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
 interface = NodePath("../Interface")
 min_distance_simulee = 195.0
@@ -114,7 +109,6 @@ excentricite = 0.0933941
 etapes_calcul_par_ecran = 100
 
 [node name="Jupiter" parent="." unique_id=1493003131 node_paths=PackedStringArray("interface") instance=ExtResource("6_wlxy5")]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 0)
 interface = NodePath("../Interface")
 min_distance_simulee = 245.0
@@ -130,7 +124,6 @@ excentricite = 0.0483862
 etapes_calcul_par_ecran = 100
 
 [node name="Saturne" parent="." unique_id=1711202820 node_paths=PackedStringArray("interface") instance=ExtResource("7_3v7ru")]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 0)
 interface = NodePath("../Interface")
 min_distance_simulee = 295.0
@@ -146,7 +139,6 @@ excentricite = 0.0538618
 etapes_calcul_par_ecran = 100
 
 [node name="Uranus" parent="." unique_id=192694237 node_paths=PackedStringArray("interface") instance=ExtResource("8_tcnuu")]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350, 0, 0)
 interface = NodePath("../Interface")
 min_distance_simulee = 345.0
@@ -162,23 +154,13 @@ excentricite = 0.0472574
 etapes_calcul_par_ecran = 100
 
 [node name="Neptune" parent="." unique_id=728117180 node_paths=PackedStringArray("interface") instance=ExtResource("9_tuemg")]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0)
 interface = NodePath("../Interface")
 min_distance_simulee = 395.0
 max_distance_simulee = 400.0
 min_distance_reelle = 4340000000000.0
 max_distance_reelle = 4650000000000.0
-Soleil = NodePath("../Soleil")
-Mercure = NodePath("../Mercure")
-Venus = NodePath("../Venus")
-Terre = NodePath("../Terre")
-Mars = NodePath("../Mars")
-Jupiter = NodePath("../Jupiter")
-Saturne = NodePath("../Saturne")
-Uranus = NodePath("../Uranus")
-Neptune = NodePath(".")
-masse_corps = 1.0199999999999999e+26
+masse_corps = 1.02e+26
 periode = 5210000000.0
 periode_relative = 659.164
 position_initiale = Vector3(4468350000000, 112053000000, -65380800000)
