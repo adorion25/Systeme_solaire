@@ -8,8 +8,8 @@ albedo_color = Color(0.18431373, 0.41568628, 0.4117647, 1)
 [node name="Terre" unique_id=138507453 instance=ExtResource("1_gxbkn")]
 
 [node name="CollisionShape3D" parent="." index="0" unique_id=1443144129]
-transform = Transform3D(6.804, 0, 0, 0, 6.804, 0, 0, 0, 6.804, 0, 0, 0)
+transform = Transform3D(6.371, 0, 0, 0, 6.371, 0, 0, 0, 6.371, 0, 0, 0)
 
 [node name="MeshInstance3D" parent="." index="1" unique_id=1367884338]
-transform = Transform3D(6.804, 0, 0, 0, 6.804, 0, 0, 0, 6.804, 0, 0, 0)
+transform = Transform3D(6.371, 0, 0, 0, 6.371, 0, 0, 0, 6.371, 0, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_gxbkn")
