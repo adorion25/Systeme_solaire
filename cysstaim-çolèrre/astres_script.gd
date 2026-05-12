@@ -19,6 +19,9 @@ static var liste_astres = []
 @export var position_initiale : Vector3
 @export var vitesse_initiale : Vector3
 @export var excentricite : float
+@export var periode_rotation : float
+@export var demi_grand_axe : float
+var vitesse_perihelie : float
 
 @export_group("Paramètres de simulation")
 @export var etapes_calcul_par_ecran : int
@@ -36,6 +39,8 @@ static var echelle_temps : float = 1
 func _ready() -> void:
 	position_reelle = position_initiale
 	vitesse = vitesse_initiale
+	
+	vitesse_perihelie = sqrt(G * 1.989e30 *(1 + excentricite)/(demi_grand_axe * (1 - excentricite)))
 	
 	#Ajoute l'astre exécutant le script dans une liste pour avoir le nombre total d'astres
 	liste_astres.append(self)

@@ -14,15 +14,13 @@ var astre_clique : Node
 
 
 func _process(delta:float) -> void:
-	pass
-
 	if astre_clique != null:
 		nom_astre.text = str(astre_clique.name)
 		masse_du_corps.text = str(format_scientifique(astre_clique.masse_corps)) + " kg"
-		#vitesse_au_perihelie.text = str(astre_clique.var) + " m/s"
+		vitesse_au_perihelie.text = str(format_scientifique(astre_clique.vitesse_perihelie)) + " m/s"
 		excentricite_de_lorbite.text = str(astre_clique.excentricite)
-		periode_revolution_autour_soleil.text = str("%.1f" % (astre_clique.periode/2.628e6) + " mois")
-		#periode_rotation_sur_soi.text = str(astre_clique.var) + " s"
+		periode_revolution_autour_soleil.text = str("%.1f" % (astre_clique.periode/2.628e6)) + " mois terrestres"
+		periode_rotation_sur_soi.text = str("%.3f" % (astre_clique.periode_rotation)) + " jours terrestres"
 
 
 func format_scientifique(valeur : float) -> String:

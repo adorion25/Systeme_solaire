@@ -13,14 +13,15 @@ nom_astre = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/Margin
 masse_du_corps = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col/Masse")
 vitesse_au_perihelie = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col/Vitesse")
 excentricite_de_lorbite = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col/Excentricité")
-periode_revolution_autour_soleil = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col/Nom Période Soleil")
+periode_revolution_autour_soleil = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col/Période Soleil")
 periode_rotation_sur_soi = NodePath("VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col/Période Soi")
 vitesse_simulation = NodePath("VBoxContainer/PanelContainer/MarginContainer/vitesse_simulation")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1837051428]
+clip_contents = true
 layout_mode = 0
-offset_right = 395.0
-offset_bottom = 112.0
+offset_right = 357.0
+offset_bottom = 248.0
 
 [node name="PanelContainer Titre" type="PanelContainer" parent="VBoxContainer" unique_id=1879963799]
 layout_mode = 2
@@ -110,7 +111,7 @@ size_flags_horizontal = 4
 [node name="Nom Période Soleil" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col" unique_id=957746302]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Période orbitale (chiffe remplace le tag???)"
+text = "Période de révolution"
 
 [node name="Période Soleil" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col" unique_id=1228715288]
 layout_mode = 2
@@ -119,7 +120,7 @@ size_flags_horizontal = 4
 [node name="Nom Période Soi" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col" unique_id=919499037]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Période de rotation sur soi"
+text = "Période de rotation"
 
 [node name="Période Soi" type="Label" parent="VBoxContainer/PanelContainer Données/VBoxContainer/MarginContainerVar/VBoxContainer/GridContainer3col" unique_id=464454727]
 layout_mode = 2
