@@ -49,6 +49,7 @@ periode = 1.0
 periode_relative = 1.0
 position_initiale = Vector3(-458758000, -767257000, -311187000)
 vitesse_initiale = Vector3(12.425, 0.376, -0.093)
+periode_rotation = 25.38
 etapes_calcul_par_ecran = 100
 
 [node name="Mercure" parent="." unique_id=1313541899 node_paths=PackedStringArray("interface") instance=ExtResource("2_6iypd")]
@@ -64,6 +65,8 @@ periode_relative = 2.892
 position_initiale = Vector3(-32649900000, -56118100000, -26543400000)
 vitesse_initiale = Vector3(33312.3, -16768.6, -12409.5)
 excentricite = 0.2056359
+periode_rotation = 58.646
+demi_grand_axe = 57909227.0
 etapes_calcul_par_ecran = 100
 
 [node name="Venus" parent="." unique_id=234343551 node_paths=PackedStringArray("interface") instance=ExtResource("3_tereu")]
@@ -79,6 +82,8 @@ periode_relative = 7.404
 position_initiale = Vector3(12839400000, -98935900000, -45325600000)
 vitesse_initiale = Vector3(34535, 4583.85, -121.752)
 excentricite = 0.0067767
+periode_rotation = -243.018
+demi_grand_axe = 108209475.0
 etapes_calcul_par_ecran = 100
 
 [node name="Terre" parent="." unique_id=1146063944 node_paths=PackedStringArray("interface") instance=ExtResource("4_cdqbm")]
@@ -94,6 +99,8 @@ periode_relative = 12.0
 position_initiale = Vector3(-26532900000, 132064000000, 57268500000)
 vitesse_initiale = Vector3(-29776.3, -4951.16, -2146.38)
 excentricite = 0.0167112
+periode_rotation = 0.99727
+demi_grand_axe = 149598262.0
 etapes_calcul_par_ecran = 100
 
 [node name="Mars" parent="." unique_id=593639474 node_paths=PackedStringArray("interface") instance=ExtResource("5_imku0")]
@@ -109,6 +116,8 @@ periode_relative = 22.572
 position_initiale = Vector3(50492900000, -188911000000, -87982500000)
 vitesse_initiale = Vector3(24459.4, 7385.96, 2728.1)
 excentricite = 0.0933941
+periode_rotation = 1.026
+demi_grand_axe = 227943820.0
 etapes_calcul_par_ecran = 100
 
 [node name="Jupiter" parent="." unique_id=1493003131 node_paths=PackedStringArray("interface") instance=ExtResource("6_wlxy5")]
@@ -124,6 +133,8 @@ periode_relative = 142.344
 position_initiale = Vector3(-253879000000, 674699000000, 295381000000)
 vitesse_initiale = Vector3(-12507.2, -3455.54, -1176.64)
 excentricite = 0.0483862
+periode_rotation = 0.41354
+demi_grand_axe = 778340821.0
 etapes_calcul_par_ecran = 100
 
 [node name="Saturne" parent="." unique_id=1711202820 node_paths=PackedStringArray("interface") instance=ExtResource("7_3v7ru")]
@@ -139,6 +150,8 @@ periode_relative = 360.072
 position_initiale = Vector3(1421820000000, 57396000000, -37532800000)
 vitesse_initiale = Vector3(-789.389, 8894.36, 3707.79)
 excentricite = 0.0538618
+periode_rotation = 0.444
+demi_grand_axe = 1426666422.0
 etapes_calcul_par_ecran = 100
 
 [node name="Uranus" parent="." unique_id=192694237 node_paths=PackedStringArray("interface") instance=ExtResource("8_tcnuu")]
@@ -154,6 +167,8 @@ periode_relative = 1008.132
 position_initiale = Vector3(1477610000000, 2309000000000, 990380000000)
 vitesse_initiale = Vector3(-5920.03, 2841.05, 1328)
 excentricite = 0.0472574
+periode_rotation = -0.718
+demi_grand_axe = 2870658186.0
 etapes_calcul_par_ecran = 100
 
 [node name="Neptune" parent="." unique_id=728117180 node_paths=PackedStringArray("interface") instance=ExtResource("9_tuemg")]
@@ -169,6 +184,8 @@ periode_relative = 1977.492
 position_initiale = Vector3(4468350000000, 112053000000, -65380800000)
 vitesse_initiale = Vector3(-29.193, 5059.17, 2073.97)
 excentricite = 0.0085905
+periode_rotation = 0.671
+demi_grand_axe = 4498396441.0
 etapes_calcul_par_ecran = 100
 
 [node name="Interface" parent="." unique_id=1115889947 instance=ExtResource("11_tereu")]
