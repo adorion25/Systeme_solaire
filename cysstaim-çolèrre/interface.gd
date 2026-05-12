@@ -17,10 +17,15 @@ func _process(delta:float) -> void:
 	if astre_clique != null:
 		nom_astre.text = str(astre_clique.name)
 		masse_du_corps.text = str(format_scientifique(astre_clique.masse_corps)) + " kg"
-		vitesse_au_perihelie.text = str(format_scientifique(astre_clique.vitesse_perihelie)) + " m/s"
-		excentricite_de_lorbite.text = str(astre_clique.excentricite)
-		periode_revolution_autour_soleil.text = str("%.1f" % (astre_clique.periode/2.628e6)) + " mois terrestres"
 		periode_rotation_sur_soi.text = str("%.3f" % (astre_clique.periode_rotation)) + " jours terrestres"
+		if astre_clique.name != "Soleil":
+			vitesse_au_perihelie.text = str(format_scientifique(astre_clique.vitesse_perihelie)) + " m/s"
+			excentricite_de_lorbite.text = str(astre_clique.excentricite)
+			periode_revolution_autour_soleil.text = str("%.1f" % (astre_clique.periode/2.628e6)) + " mois terrestres"
+		else:
+			vitesse_au_perihelie.text = ""
+			excentricite_de_lorbite.text = ""
+			periode_revolution_autour_soleil.text = ""
 
 
 func format_scientifique(valeur : float) -> String:
