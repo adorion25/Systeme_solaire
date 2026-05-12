@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://cca27akcbavyu"]
 
 [ext_resource type="PackedScene" uid="uid://dx6iqljvxvb8s" path="res://astres_base.tscn" id="1_xn7oe"]
+[ext_resource type="Texture2D" uid="uid://dmvaskgms2jfx" path="res://2k_mars.jpg" id="2_ksmih"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xn7oe"]
-albedo_color = Color(0.6, 0.23921569, 0, 1)
+albedo_texture = ExtResource("2_ksmih")
 
 [node name="Mars" unique_id=138507453 instance=ExtResource("1_xn7oe")]
 

@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://cks3tdbmqsgmk"]
 
 [ext_resource type="PackedScene" uid="uid://dx6iqljvxvb8s" path="res://astres_base.tscn" id="1_e0wss"]
+[ext_resource type="Texture2D" uid="uid://45q08ok5lj8o" path="res://2k_saturn.jpg" id="2_wh08y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e0wss"]
-albedo_color = Color(0.6901961, 0.56078434, 0.21176471, 1)
+albedo_texture = ExtResource("2_wh08y")
 
 [node name="Saturne" unique_id=138507453 instance=ExtResource("1_e0wss")]
 

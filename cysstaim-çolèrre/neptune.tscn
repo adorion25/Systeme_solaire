@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://btic5h7rcmng0"]
 
 [ext_resource type="PackedScene" uid="uid://dx6iqljvxvb8s" path="res://astres_base.tscn" id="1_ktkx8"]
+[ext_resource type="Texture2D" uid="uid://b7bkoyt06pujc" path="res://2k_neptune.jpg" id="2_qgwa2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktkx8"]
-albedo_color = Color(0.21176471, 0.40784314, 0.5882353, 1)
+albedo_texture = ExtResource("2_qgwa2")
 
 [node name="Neptune" unique_id=138507453 instance=ExtResource("1_ktkx8")]
 

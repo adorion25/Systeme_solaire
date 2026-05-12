@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://bevj4x1nwydyk"]
 
 [ext_resource type="PackedScene" uid="uid://dx6iqljvxvb8s" path="res://astres_base.tscn" id="1_4gtc2"]
+[ext_resource type="Texture2D" uid="uid://cnclbo4cdvcbs" path="res://2k_mercury.jpg" id="2_g30sm"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gtc2"]
-albedo_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1buev"]
+albedo_texture = ExtResource("2_g30sm")
 
 [node name="Mercure" unique_id=138507453 instance=ExtResource("1_4gtc2")]
 
@@ -12,4 +13,4 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="MeshInstance3D" parent="." index="1" unique_id=1367884338]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.01468929297846166)
-surface_material_override/0 = SubResource("StandardMaterial3D_4gtc2")
+surface_material_override/0 = SubResource("StandardMaterial3D_1buev")

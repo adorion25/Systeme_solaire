@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://b4f2f18abw22q"]
 
 [ext_resource type="PackedScene" uid="uid://dx6iqljvxvb8s" path="res://astres_base.tscn" id="1_mvbpq"]
+[ext_resource type="Texture2D" uid="uid://bayk5kdun6fs" path="res://2k_jupiter.jpg" id="2_si51w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mvbpq"]
-albedo_color = Color(0.6901961, 0.49803922, 0.20784314, 1)
+albedo_texture = ExtResource("2_si51w")
 
 [node name="Jupiter" unique_id=138507453 instance=ExtResource("1_mvbpq")]
 

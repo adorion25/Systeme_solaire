@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://ct1h1ol6r8ntd"]
 
 [ext_resource type="PackedScene" uid="uid://dx6iqljvxvb8s" path="res://astres_base.tscn" id="1_gxbkn"]
+[ext_resource type="Texture2D" uid="uid://bi8ym2bbghw8l" path="res://2k_earth_daymap.jpg" id="2_4wbop"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxbkn"]
-albedo_color = Color(0.18431373, 0.41568628, 0.4117647, 1)
+albedo_texture = ExtResource("2_4wbop")
 
 [node name="Terre" unique_id=138507453 instance=ExtResource("1_gxbkn")]
 

@@ -2,6 +2,7 @@ extends RigidBody3D
 class_name Astre
 
 var astre_clique : Astre
+@warning_ignore("shadowed_global_identifier")
 @export var interface : Node
 
 @export_group("Paramètre de conversion simulation")
@@ -123,6 +124,7 @@ func appliquer_runge_kutta(temps_dernier_ecran : float) -> void:
 		position_reelle += vitesse * h
 		temps += h
 
+@warning_ignore("unused_parameter")
 func _on_clic(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		interface.astre_clique = self
