@@ -166,7 +166,7 @@ periode_relative = 1008.132
 position_initiale = Vector3(1477610000000, 2309000000000, 990380000000)
 vitesse_initiale = Vector3(-5920.03, 2841.05, 1328)
 excentricite = 0.0472574
-periode_rotation = -0.718
+periode_rotation = 0.718
 demi_grand_axe = 2870658186.0
 etapes_calcul_par_ecran = 100
 
@@ -177,7 +177,7 @@ min_distance_simulee = 303.69
 max_distance_simulee = 305.0
 min_distance_reelle = 4340000000000.0
 max_distance_reelle = 4650000000000.0
-masse_corps = 1.02e+26
+masse_corps = 1.0199999999999999e+26
 periode = 5210000000.0
 periode_relative = 1977.492
 position_initiale = Vector3(4468350000000, 112053000000, -65380800000)
