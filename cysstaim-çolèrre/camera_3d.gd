@@ -26,9 +26,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("Inclinaison_bas"):
 		rotate_object_local(Vector3.LEFT, vitesse_rotation * delta)
 	if Input.is_action_pressed("Rotation_droite"):
-		global_rotate(Vector3.BACK, -vitesse_rotation * delta)
+		rotate_object_local(Vector3.DOWN, vitesse_rotation * delta)
 	if Input.is_action_pressed("Rotation_gauche"):
-		global_rotate(Vector3.BACK, vitesse_rotation * delta)
+		rotate_object_local(Vector3.UP, vitesse_rotation * delta)
 		
 	if Input.is_action_just_pressed("Reset"):
 		position = Vector3(0, -450, 250)

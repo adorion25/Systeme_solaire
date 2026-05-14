@@ -81,7 +81,7 @@ func acceleration_gravitationnelle(autre_corps: RigidBody3D, position_i: Vector3
 	Paramètre :
 	position réelle de l'astre dans le plan 3D
 	"""
-	if autre_corps == self or autre_corps == null or autre_corps.position_reelle == Vector3.ZERO:
+	if autre_corps == self or autre_corps == null :
 		return Vector3.ZERO
 
 	var scalaire = G * autre_corps.masse_corps / (autre_corps.position_reelle - position_i).length()**3

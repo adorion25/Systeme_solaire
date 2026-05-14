@@ -5,8 +5,8 @@ func _ready() -> void:
 
 	pressed.connect(changer_mode_pause)
 
-
 func changer_mode_pause() -> void:
+
 	Astre.pause = !Astre.pause
 	
 	if Astre.pause :

@@ -5,7 +5,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1vuo"]
 emission_enabled = true
-emission_energy_multiplier = 5.1
+emission_energy_multiplier = 3.01
 emission_texture = ExtResource("2_usdec")
 
 [node name="Soleil" unique_id=138507453 instance=ExtResource("1_r1vuo")]
