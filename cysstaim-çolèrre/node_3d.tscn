@@ -13,22 +13,22 @@
 [ext_resource type="PackedScene" uid="uid://btic5h7rcmng0" path="res://neptune.tscn" id="9_tuemg"]
 [ext_resource type="PackedScene" uid="uid://sih1ldeg6fm2" path="res://interface.tscn" id="11_tereu"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_imku0"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_cdqbm"]
 panorama = ExtResource("1_cdqbm")
 
-[sub_resource type="Sky" id="Sky_wlxy5"]
-sky_material = SubResource("PanoramaSkyMaterial_imku0")
+[sub_resource type="Sky" id="Sky_imku0"]
+sky_material = SubResource("PanoramaSkyMaterial_cdqbm")
 
-[sub_resource type="Environment" id="Environment_3v7ru"]
+[sub_resource type="Environment" id="Environment_wlxy5"]
 background_mode = 2
-sky = SubResource("Sky_wlxy5")
+sky = SubResource("Sky_imku0")
 
 [node name="Système solaire" type="Node3D" unique_id=1593736269]
 
 [node name="Environment_camera" type="Node3D" parent="." unique_id=266487833]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment_camera" unique_id=714435028]
-environment = SubResource("Environment_3v7ru")
+environment = SubResource("Environment_wlxy5")
 
 [node name="Camera3D" type="Camera3D" parent="Environment_camera" unique_id=1026225519]
 transform = Transform3D(1, 0, 0, 0, 0.34202014220472515, -0.9396926177061408, 0, 0.9396926177061408, 0.34202014220472515, 0, -450, 250)
@@ -177,7 +177,7 @@ min_distance_simulee = 303.69
 max_distance_simulee = 305.0
 min_distance_reelle = 4340000000000.0
 max_distance_reelle = 4650000000000.0
-masse_corps = 1.0199999999999999e+26
+masse_corps = 1.02e+26
 periode = 5210000000.0
 periode_relative = 1977.492
 position_initiale = Vector3(4468350000000, 112053000000, -65380800000)
